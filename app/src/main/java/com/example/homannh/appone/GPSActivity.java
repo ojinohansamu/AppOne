@@ -2,8 +2,16 @@ package com.example.homannh.appone;
 
 //Just download this file from GitHub and added this comment to see if I can get the update from the
 //other laptop
+// Updated using Access check. This apps now work, but make sure you go to your phone setting and grant this AppOne for location and sdcard
+
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
+
 import com.google.android.gms.location.LocationListener;
+
+//import android.renderscript.Double2;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +24,7 @@ import com.google.android.gms.location.FusedLocationProviderApi;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-public class GPSActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener{
+public class GPSActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private TextView lblLatitudeValue;
     private TextView lblLongitude;
@@ -46,19 +54,24 @@ public class GPSActivity extends AppCompatActivity implements GoogleApiClient.Co
         //Init Location request with the accuracy and frequency
         locationRequest = new LocationRequest();
 
-        locationRequest.setInterval(MINUTE);
+        locationRequest.setInterval(15 * MILLISECONDS_PER_SECOND);//        MINUTE);
         locationRequest.setFastestInterval(10 * MILLISECONDS_PER_SECOND);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);//PRIORITY_BALANCED_POWER_ACCURACY);
 
     }
 
-    public void btnPauseGPSOnClicked(View view)
-    {
-        notReadyMessage();
+    public void btnRefreshGPSOnClicked(View view) {
+        Toast.makeText(this, "Latitude : " + Double.toString(latitude) + "\nLongitute : " + Double.toString(longitude), Toast.LENGTH_LONG).show();
+    }
+
+    public void btnBackOnClicked(View view) {
+
+        Intent mainMenu = new Intent(this,MainActivity.class);
+        startActivity(mainMenu);
     }
 
 
-    public void notReadyMessage(){
+    public void notReadyMessage() {
         new MessagesDisplay(GPSActivity.this, "From GPS \nNOT Ready!");
         MessagesDisplay.showMessage();
     }
@@ -71,6 +84,17 @@ public class GPSActivity extends AppCompatActivity implements GoogleApiClient.Co
     }
 
     private void requestLocationUpdate() {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            Toast.makeText(this, "GPS NOT granted", Toast.LENGTH_LONG).show();
+            return;
+        }
         LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
 
     }
@@ -117,7 +141,7 @@ public class GPSActivity extends AppCompatActivity implements GoogleApiClient.Co
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         //now put these results to UI
-        lblLatitudeValue.setText(""+ latitude);
+        lblLatitudeValue.setText(Double.toString(latitude));// sort cut to conver to string (""+ latitude);
         lblLongitude.setText(Double.toString(longitude)); // This use the Double to string method to change from doule to string
 
     }

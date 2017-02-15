@@ -63,13 +63,26 @@
         android:textSize="18sp"/>
 
     <Button
-        android:text="@string/lblPauseGPS"
+        android:text="@string/lblGoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnPauseGPS"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:background="@mipmap/sbtn"
-        android:onClick="btnPauseGPSOnClicked" />
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/lblLongitudeValue"
+        android:layout_toStartOf="@+id/lblLongitudeValue"
+        android:id="@+id/btnBack"
+        android:onClick="btnBackOnClicked"
+        android:background="@mipmap/sbtn" />
+
+    <Button
+        android:text="@string/lblGPSCapture"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRefreshGPS"
+        android:onClick="btnRefreshGPSOnClicked"
+        android:layout_marginTop="39dp"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/lblLongitude"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@mipmap/sbtn" />
 
 </RelativeLayout>
