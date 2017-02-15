@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#d3d7c8"
+    tools:context="com.example.homannh.appone.MainActivity">
+
+
+    <TextView
+        android:text="@string/lblWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:id="@+id/lblWelcome"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/lblGPSTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:id="@+id/btnOne"
+        android:layout_below="@+id/lblWelcome"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/sbtn"
+        android:onClick="btnOneClicked" />
+
+    <Button
+        android:text="@string/lblBlank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/btnTwo"
+        android:background="@mipmap/sbtn"
+        android:layout_below="@+id/btnOne"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="btnTwoClicked" />
+
+    <Button
+        android:text="@string/lblBlank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/btnThree"
+        android:background="@mipmap/sbtn"
+        android:layout_below="@+id/btnTwo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="btnThreeClicked" />
+
+    <Button
+        android:text="@string/lblBlank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/btnFour"
+        android:background="@mipmap/sbtn"
+        android:layout_below="@+id/btnThree"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="btnFourClicked" />
+
+    <Button
+        android:text="@string/lblBlank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/btnFive"
+        android:background="@mipmap/sbtn"
+        android:layout_below="@+id/btnFour"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="btnFiveClicked" />
+    <Button
+        android:text="@string/lblBlank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/btnSix"
+        android:background="@mipmap/sbtn"
+        android:layout_below="@+id/btnFive"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="btnSixClicked" />
+</RelativeLayout>
