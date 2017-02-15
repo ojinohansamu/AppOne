@@ -14,4 +14,7 @@
     <string name="lblDescription">Description</string>
     <string name="lblWelcome">Sample Apps</string>
     <string name="lblGPSTest">GPS Test</string>
+    <string name="lblGoBack">Go Back</string>
+    <string name="lblRefreshGPS">Refresh</string>
+    <string name="lblGPSCapture">Capture GPS info</string>
 </resources>
