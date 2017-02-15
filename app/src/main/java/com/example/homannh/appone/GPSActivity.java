@@ -1,5 +1,7 @@
 package com.example.homannh.appone;
 
+//Just download this file from GitHub and added this comment to see if I can get the update from the
+//other laptop
 import android.location.Location;
 import com.google.android.gms.location.LocationListener;
 import android.support.v7.app.AppCompatActivity;
