@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.homannh.dsd.DSDActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -22,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnTwoClicked(View view){
-        notReadyMessage();
+        Intent dsdIntent = new Intent(this, DSDActivity.class);
+        startActivity(dsdIntent);
 
     }
 
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void notReadyMessage(){
-        new MessagesDisplay(MainActivity.this, "From Main ..");
+        new MessagesDisplay(MainActivity.this, "Not ready ..");
         MessagesDisplay.showMessage();
         //Toast.makeText(this, "Not ready yet!", Toast.LENGTH_LONG).show();
     }

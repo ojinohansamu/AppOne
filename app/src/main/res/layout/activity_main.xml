@@ -33,7 +33,7 @@
         android:onClick="btnOneClicked" />
 
     <Button
-        android:text="@string/lblBlank"
+        android:text="@string/lblDSD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"

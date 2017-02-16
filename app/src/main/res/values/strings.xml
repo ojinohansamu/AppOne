@@ -17,4 +17,9 @@
     <string name="lblGoBack">Go Back</string>
     <string name="lblRefreshGPS">Refresh</string>
     <string name="lblGPSCapture">Capture GPS info</string>
+    <string name="lblLogin">Login</string>
+    <string name="lblPassword">Password:</string>
+    <string name="lblUserID">User ID:</string>
+    <string name="lblExit">Exit</string>
+    <string name="lblDSD">D S D</string>
 </resources>
