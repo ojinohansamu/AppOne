@@ -66,7 +66,8 @@
         android:layout_below="@+id/txtPassword"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@mipmap/newgrey" />
+        android:background="@mipmap/greblue"
+        android:onClick="btnLoginOnClicked" />
 
     <Button
         android:text="@string/lblExit"
@@ -75,7 +76,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="14dp"
         android:id="@+id/btnExit"
-        android:background="@mipmap/newgrey"
-        android:onClick="btnExitOnClicked" />
+        android:onClick="btnExitOnClicked"
+        android:background="@mipmap/greblue" />
 
 </RelativeLayout>

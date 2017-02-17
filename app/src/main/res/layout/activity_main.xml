@@ -19,7 +19,9 @@
         android:layout_marginTop="14dp"
         android:id="@+id/lblWelcome"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
 
     <Button
         android:text="@string/lblGPSTest"
@@ -29,7 +31,7 @@
         android:id="@+id/btnOne"
         android:layout_below="@+id/lblWelcome"
         android:layout_centerHorizontal="true"
-        android:background="@mipmap/sbtn"
+        android:background="@mipmap/cool"
         android:onClick="btnOneClicked" />
 
     <Button
@@ -38,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         android:id="@+id/btnTwo"
-        android:background="@mipmap/sbtn"
+        android:background="@mipmap/cool"
         android:layout_below="@+id/btnOne"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -50,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         android:id="@+id/btnThree"
-        android:background="@mipmap/sbtn"
+        android:background="@mipmap/cool"
         android:layout_below="@+id/btnTwo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -62,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         android:id="@+id/btnFour"
-        android:background="@mipmap/sbtn"
+        android:background="@mipmap/cool"
         android:layout_below="@+id/btnThree"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -74,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         android:id="@+id/btnFive"
-        android:background="@mipmap/sbtn"
+        android:background="@mipmap/cool"
         android:layout_below="@+id/btnFour"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -85,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         android:id="@+id/btnSix"
-        android:background="@mipmap/sbtn"
+        android:background="@mipmap/cool"
         android:layout_below="@+id/btnFive"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

@@ -20,4 +20,9 @@ public class DSDActivity extends AppCompatActivity {
         Intent mainIntent = new Intent(this,MainActivity.class);
         startActivity(mainIntent);
     }
+
+    public void btnLoginOnClicked(View view){
+        Intent dsdMainMenuActivity = new Intent(this,DSDMainMenuActivity.class);
+        startActivity(dsdMainMenuActivity);
+    }
 }

@@ -22,4 +22,9 @@
     <string name="lblUserID">User ID:</string>
     <string name="lblExit">Exit</string>
     <string name="lblDSD">D S D</string>
+    <string name="lblAdjustments">Start of the day</string>
+    <string name="lblSales">Sales</string>
+    <string name="lblEndOfTheDay">End of Day</string>
+    <string name="lblOrders">Orders</string>
+    <string name="lblMiscellaneous">Miscellaneous</string>
 </resources>
