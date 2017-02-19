@@ -71,7 +71,7 @@
         android:layout_toStartOf="@+id/lblLongitudeValue"
         android:id="@+id/btnBack"
         android:onClick="btnBackOnClicked"
-        android:background="@mipmap/cool" />
+        android:background="@drawable/button_short" />
 
     <Button
         android:text="@string/lblGPSCapture"
@@ -83,6 +83,6 @@
         android:layout_below="@+id/lblLongitude"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@mipmap/cool" />
+        android:background="@drawable/button_short" />
 
 </RelativeLayout>
