@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.homannh.camera.CameraActivity;
 import com.example.homannh.dsd.DSDActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnThreeClicked(View view){
-        notReadyMessage();
+        Intent cameraIntent = new Intent(this, CameraActivity.class);
+        startActivity(cameraIntent);
 
     }
 

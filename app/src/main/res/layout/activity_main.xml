@@ -47,7 +47,6 @@
         android:onClick="btnTwoClicked" />
 
     <Button
-        android:text="@string/lblBlank"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
@@ -56,7 +55,8 @@
         android:layout_below="@+id/btnTwo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="btnThreeClicked" />
+        android:onClick="btnThreeClicked"
+        android:text="@string/lblTakePicture" />
 
     <Button
         android:text="@string/lblBlank"

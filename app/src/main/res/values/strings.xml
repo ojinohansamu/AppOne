@@ -27,4 +27,5 @@
     <string name="lblEndOfTheDay">End of Day</string>
     <string name="lblOrders">Orders</string>
     <string name="lblMiscellaneous">Miscellaneous</string>
+    <string name="lblTakePicture">Take Picture</string>
 </resources>
