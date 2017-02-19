@@ -1,4 +1,4 @@
-package com.example.homannh.appone;
+package com.example.homannh.gps;
 
 //Just download this file from GitHub and added this comment to see if I can get the update from the
 //other laptop
@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 
+import com.example.homannh.appone.MainActivity;
+import com.example.homannh.appone.MessagesDisplay;
+import com.example.homannh.appone.R;
 import com.google.android.gms.location.LocationListener;
 
 //import android.renderscript.Double2;

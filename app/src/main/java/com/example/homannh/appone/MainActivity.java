@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.homannh.camera.CameraActivity;
 import com.example.homannh.dsd.DSDActivity;
+import com.example.homannh.gps.GPSActivity;
 
 public class MainActivity extends AppCompatActivity {
 

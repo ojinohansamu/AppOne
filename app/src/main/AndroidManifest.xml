@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GPSActivity" />
+        <activity android:name="com.example.homannh.gps.GPSActivity"/>
         <activity android:name="com.example.homannh.dsd.DSDActivity" />
         <activity android:name="com.example.homannh.dsd.DSDMainMenuActivity" />
         <activity android:name="com.example.homannh.camera.CameraActivity"></activity>
