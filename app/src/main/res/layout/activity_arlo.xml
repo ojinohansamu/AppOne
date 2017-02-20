@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_arlo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#f1f1f1"
+    tools:context="com.example.homannh.dsd.activity.ArloActivity">
+
+
+    <TextView
+        android:text="@string/lblStoreName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:id="@+id/lblStoreName" />
+
+    <TextView
+        android:text="@string/lblAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblStoreName"
+        android:layout_alignRight="@+id/lblStoreName"
+        android:layout_alignEnd="@+id/lblStoreName"
+        android:layout_marginTop="18dp"
+        android:id="@+id/lblStoreAddress" />
+
+    <TextView
+        android:text="@string/lblCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblStoreAddress"
+        android:layout_alignRight="@+id/lblStoreAddress"
+        android:layout_alignEnd="@+id/lblStoreAddress"
+        android:layout_marginTop="18dp"
+        android:id="@+id/lblCity" />
+
+    <TextView
+        android:text="@string/lblArloNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblCity"
+        android:layout_alignRight="@+id/lblCity"
+        android:layout_alignEnd="@+id/lblCity"
+        android:layout_marginTop="14dp"
+        android:id="@+id/lblArloNo" />
+
+    <TextView
+        android:text="@string/lblStopNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/lblStoreName"
+        android:layout_alignEnd="@+id/lblStoreName"
+        android:layout_marginTop="14dp"
+        android:id="@+id/lblStopNo" />
+
+    <TextView
+        android:text="@string/lblBlank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lblStopNo"
+        android:layout_toRightOf="@+id/lblStopNo"
+        android:layout_toEndOf="@+id/lblStopNo"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:id="@+id/lblStopNoValue" />
+
+    <TextView
+        android:text="@string/lblBlank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblArloNo"
+        android:layout_alignLeft="@+id/lblStopNoValue"
+        android:layout_alignStart="@+id/lblStopNoValue"
+        android:id="@+id/lblArloNoValue" />
+
+    <AutoCompleteTextView
+        android:text="@string/lblBlank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblStopNoValue"
+        android:layout_toRightOf="@+id/lblStopNoValue"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/actStoreName" />
+
+    <TextView
+        android:text="@string/lblBlank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblStoreAddress"
+        android:layout_toRightOf="@+id/lblArloNoValue"
+        android:layout_toEndOf="@+id/lblArloNoValue"
+        android:id="@+id/lblAddressValue" />
+
+    <TextView
+        android:text="@string/lblBlank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lblArloNo"
+        android:layout_toRightOf="@+id/lblArloNoValue"
+        android:layout_toEndOf="@+id/lblArloNoValue"
+        android:id="@+id/lblCitiValue" />
+
+    <Button
+        android:text="@string/lblExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/btnBack"
+        android:background="@drawable/button_short"
+        android:onClick="btnBackClicked" />
+</RelativeLayout>

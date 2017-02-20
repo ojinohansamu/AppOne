@@ -4,10 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.homannh.camera.CameraActivity;
-import com.example.homannh.dsd.DSDActivity;
+import com.example.homannh.dsd.activity.DSDActivity;
 import com.example.homannh.gps.GPSActivity;
 
 public class MainActivity extends AppCompatActivity {

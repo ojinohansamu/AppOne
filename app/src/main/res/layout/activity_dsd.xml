@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#f1f1f1"
-    tools:context="com.example.homannh.dsd.DSDActivity">
+    tools:context="com.example.homannh.dsd.activity.DSDActivity">
 
     <TextView
         android:text="@string/lblUserID"

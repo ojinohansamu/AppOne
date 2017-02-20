@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#f1f1f1"
-    tools:context="com.example.homannh.dsd.DSDMainMenuActivity">
+    tools:context="com.example.homannh.dsd.activity.DSDMainMenuActivity">
 
     <TextView
         android:text="TextView"
@@ -39,7 +39,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:textSize="18sp"
-        android:background="@drawable/button_long" />
+        android:background="@drawable/button_long"
+        android:onClick="btnAdjutmentClicked" />
 
 
     <Button

@@ -1,4 +1,4 @@
-package com.example.homannh.dsd;
+package com.example.homannh.dsd.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -18,5 +18,10 @@ public class DSDMainMenuActivity extends AppCompatActivity {
     public void btnExitOnClicked(View view){
         Intent mainActivity = new Intent(this, MainActivity.class);
         startActivity(mainActivity);
+    }
+
+    public void btnAdjutmentClicked(View view){
+        Intent arloActivity = new Intent(this, ArloActivity.class);
+        startActivity(arloActivity);
     }
 }
