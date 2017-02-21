@@ -7,6 +7,8 @@ import android.view.ViewDebug;
  */
 
 public class ArloDTO {
+
+    long _ID;
     int GUID_CUSTOMER;
     String CUSTOMER_ID;
     String ARLO_NO;
@@ -17,7 +19,7 @@ public class ArloDTO {
     String END_DATE;
     String TICKET_TYPE;
     String TICKET_TYPE_SEQ;
-    String TICKET_COPIES_QTY;
+    int TICKET_COPIES_QTY;
     String CR_TERMS_CODE;
     String CR_STATUS_CODE;
     String PRODUCT_TYPE;
@@ -83,6 +85,13 @@ public class ArloDTO {
         return CUSTOMER_ID + " " + ARLO_NO + " " + STORE_NAME + " " + STORE_ADDRESS_1;
     }
 
+    public long get_ID() {
+        return _ID;
+    }
+
+    public void set_ID(long _ID) {
+        this._ID = _ID;
+    }
 
     public int getGUID_CUSTOMER() {
         return GUID_CUSTOMER;
@@ -164,11 +173,11 @@ public class ArloDTO {
         this.TICKET_TYPE_SEQ = TICKET_TYPE_SEQ;
     }
 
-    public String getTICKET_COPIES_QTY() {
+    public int getTICKET_COPIES_QTY() {
         return TICKET_COPIES_QTY;
     }
 
-    public void setTICKET_COPIES_QTY(String TICKET_COPIES_QTY) {
+    public void setTICKET_COPIES_QTY(int TICKET_COPIES_QTY) {
         this.TICKET_COPIES_QTY = TICKET_COPIES_QTY;
     }
 

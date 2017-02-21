@@ -1,21 +1,12 @@
 <resources>
     <string name="app_name">AppOne</string>
-    <string name="lblPauseGPS">Pause GPS</string>
     <string name="lblLatitude">Latitude</string>
     <string name="lblLongitude">Longitude</string>
     <string name="lblZero">0.0</string>
-    <string name="lblGPSAge">GPS Age</string>
-    <string name="lblPlantName">Plant Name</string>
     <string name="lblBlank" />
-    <string name="lblShowSaved">Show Saved</string>
-    <string name="lblTakePhoto">TakePhoto</string>
-    <string name="lblSave">Save</string>
-    <string name="lblLocation">Location</string>
-    <string name="lblDescription">Description</string>
     <string name="lblWelcome">Sample Apps</string>
     <string name="lblGPSTest">GPS Test</string>
     <string name="lblGoBack">Go Back</string>
-    <string name="lblRefreshGPS">Refresh</string>
     <string name="lblGPSCapture">Capture GPS info</string>
     <string name="lblLogin">Login</string>
     <string name="lblPassword">Password:</string>
