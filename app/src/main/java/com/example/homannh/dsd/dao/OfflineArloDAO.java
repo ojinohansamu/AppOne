@@ -5,9 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 
 import com.example.homannh.dsd.dto.ArloDTO;
+import com.example.homannh.dsd.dto.ProductDTO;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -94,7 +97,13 @@ public class OfflineArloDAO extends SQLiteOpenHelper implements IOfflineArloDAO 
     //we have to make constructor since this SQLiteOpenHelper does not have the default contructor
     // that's why we have to create our own as a method below
     public OfflineArloDAO(Context ctx){
-        super(ctx, "winhh.db", null, 2); //-> SQLiteOpenHelper needs 4 parms, COntent of this activity, db name, null, version no.
+
+        super(ctx, "winhh.db", null, 1); //-> SQLiteOpenHelper needs 4 parms, COntent of this activity, db name, null, version no.
+
+       /* H. Homann 02-22-2017 Tried to use SD card but failed. Don't know why?????
+        super(ctx, Environment.getExternalStorageDirectory()+
+                File.separator + "winhh.db", null, 1); //-> SQLiteOpenHelper needs 4 parms, COntent of this activity, db name, null, version no.
+        */
     }
 
 
@@ -110,7 +119,7 @@ public class OfflineArloDAO extends SQLiteOpenHelper implements IOfflineArloDAO 
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GUID_CUSTOMER + " INTEGER, " + CUSTOMER_ID + " TEXT,"  +
                 ARLO_NO + " TEXT," + STORE_NO + " TEXT," + STOP_NO + " INTEGER," + ACCOUNT_NO + " TEXT," +
                 START_DATE + " TEXT," + END_DATE + " TEXT," + TICKET_TYPE + " TEXT," + TICKET_TYPE_SEQ + " TEXT," +
-                TICKET_COPIES_QTY + " INTEGER," + CR_TERMS_CODE + " TEXT," + CR_STATUS_CODE + " TEXT," + PRODUCT_TYPE + " TEXT," +
+                TICKET_COPIES_QTY + " INTEGER," + CR_TERMS_CODE + " INTEGER," + CR_STATUS_CODE + " TEXT," + PRODUCT_TYPE + " TEXT," +
                 CUST_VENDOR + " TEXT," + LOCKBOX_ID + " TEXT," + DEPT_CONTACT + " TEXT," + DEPT_CODE + " TEXT," +
                 PRICE_OV_IND + " TEXT," + TICKET_DISCOUNT_PER + " TEXT," + PROMO_IND + " INTEGER," + AGE_DATED_RET_IND + " TEXT," +
                 PROMPT_FROM_LOAD_IND + " TEXT," + FORECAST_IND + " TEXT," + DSD_REQ_IND + " TEXT," + SIGNATURE_REQUIRED_IND + " TEXT," +
@@ -133,6 +142,7 @@ public class OfflineArloDAO extends SQLiteOpenHelper implements IOfflineArloDAO 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + ARLO_TABLE);
         onCreate(db);
 
     }

@@ -9,7 +9,7 @@ import android.view.ViewDebug;
 public class ArloDTO {
 
     long _ID;
-    int GUID_CUSTOMER;
+    long GUID_CUSTOMER;
     String CUSTOMER_ID;
     String ARLO_NO;
     String STORE_NO;
@@ -20,7 +20,7 @@ public class ArloDTO {
     String TICKET_TYPE;
     String TICKET_TYPE_SEQ;
     int TICKET_COPIES_QTY;
-    String CR_TERMS_CODE;
+    int CR_TERMS_CODE;
     String CR_STATUS_CODE;
     String PRODUCT_TYPE;
     String CUST_VENDOR;
@@ -28,7 +28,7 @@ public class ArloDTO {
     String DEPT_CONTACT;
     String DEPT_CODE;
     String PRICE_OV_IND;
-    String TICKET_DISCOUNT_PER;
+    double TICKET_DISCOUNT_PER;
     String PROMO_IND;
     String AGE_DATED_RET_IND;
     String PROMPT_FROM_LOAD_IND;
@@ -73,7 +73,7 @@ public class ArloDTO {
     String NAME_MODIFIED_IND;
     double BALANCE_AMT;
     String SELECTED_STOP;
-    String TICKET_SURCHARGE_AMT;
+    double TICKET_SURCHARGE_AMT;
     String DELIVERY_MESSAGE;
     String CALLBACK_PROMPT_IND;
     String CALLBACK_TODAY_CODE;
@@ -93,11 +93,11 @@ public class ArloDTO {
         this._ID = _ID;
     }
 
-    public int getGUID_CUSTOMER() {
+    public long getGUID_CUSTOMER() {
         return GUID_CUSTOMER;
     }
 
-    public void setGUID_CUSTOMER(int GUID_CUSTOMER) {
+    public void setGUID_CUSTOMER(long GUID_CUSTOMER) {
         this.GUID_CUSTOMER = GUID_CUSTOMER;
     }
 
@@ -181,11 +181,11 @@ public class ArloDTO {
         this.TICKET_COPIES_QTY = TICKET_COPIES_QTY;
     }
 
-    public String getCR_TERMS_CODE() {
+    public int getCR_TERMS_CODE() {
         return CR_TERMS_CODE;
     }
 
-    public void setCR_TERMS_CODE(String CR_TERMS_CODE) {
+    public void setCR_TERMS_CODE(int CR_TERMS_CODE) {
         this.CR_TERMS_CODE = CR_TERMS_CODE;
     }
 
@@ -245,11 +245,11 @@ public class ArloDTO {
         this.PRICE_OV_IND = PRICE_OV_IND;
     }
 
-    public String getTICKET_DISCOUNT_PER() {
+    public double getTICKET_DISCOUNT_PER() {
         return TICKET_DISCOUNT_PER;
     }
 
-    public void setTICKET_DISCOUNT_PER(String TICKET_DISCOUNT_PER) {
+    public void setTICKET_DISCOUNT_PER(double TICKET_DISCOUNT_PER) {
         this.TICKET_DISCOUNT_PER = TICKET_DISCOUNT_PER;
     }
 
@@ -605,11 +605,11 @@ public class ArloDTO {
         this.SELECTED_STOP = SELECTED_STOP;
     }
 
-    public String getTICKET_SURCHARGE_AMT() {
+    public double getTICKET_SURCHARGE_AMT() {
         return TICKET_SURCHARGE_AMT;
     }
 
-    public void setTICKET_SURCHARGE_AMT(String TICKET_SURCHARGE_AMT) {
+    public void setTICKET_SURCHARGE_AMT(double TICKET_SURCHARGE_AMT) {
         this.TICKET_SURCHARGE_AMT = TICKET_SURCHARGE_AMT;
     }
 

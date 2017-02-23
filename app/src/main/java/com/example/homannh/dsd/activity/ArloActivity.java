@@ -17,6 +17,7 @@ H. Homann 2-20-2017
     -https://www.youtube.com/watch?v=RSLcu0jW4Ys
 
  */
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -25,6 +26,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
 
 
 import com.example.homannh.appone.R;
@@ -37,6 +39,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -48,12 +51,17 @@ import java.util.Set;
 public class ArloActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
     private AutoCompleteTextView actStoreName;
+    int noArlos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arlo);
         actStoreName = (AutoCompleteTextView) findViewById(R.id.actStoreName);
+
+        File externalStorageDirectory = Environment.getExternalStorageDirectory();
+
+        Toast.makeText(this, externalStorageDirectory.toString(), Toast.LENGTH_LONG).show();
 
         //get Arlo names for our auto comple
         ArloSearchTask ast = new ArloSearchTask();
@@ -108,8 +116,13 @@ public class ArloActivity extends AppCompatActivity implements GoogleApiClient.C
             if(countArlos == 0)
             {
                 allArlos = LoadArloRaw();
+                for (ArloDTO arlo : allArlos) {
+                    //Now we insert each arlo to db
+                    offlineArloDAO.insert(arlo);
+                    noArlos ++;
+                }
 
-                //for (ArloDTO arlo)
+
 
             }
             else
@@ -132,31 +145,46 @@ public class ArloActivity extends AppCompatActivity implements GoogleApiClient.C
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try{
             String csvLine;
+            int cnt = 0;
+
             while ((csvLine = reader.readLine()) != null)
             {
                 data = csvLine.split(",");
                 try
                 {
-                    ArloDTO arlo = new ArloDTO();
-                    arlo.setCUSTOMER_ID(data[0].toString());
-                    arlo.setARLO_NO(data[1].toString());
-                    arlo.setSTORE_NO(data[2].toString());
-                    arlo.setSTOP_NO(Integer.parseInt(data[3].toString()));
-                    arlo.setSTART_DATE(data[4].toString());
-                    arlo.setEND_DATE(data[5].toString());
-                    arlo.setTICKET_COPIES_QTY(Integer.parseInt(data[8].toString()));
+                    if(cnt > 0) {
+                        ArloDTO arlo = new ArloDTO();
+                        arlo.setCUSTOMER_ID(data[0].toString());
+                        arlo.setARLO_NO(data[1].toString());
+                        arlo.setSTORE_NO(data[2].toString());
+                        arlo.setSTOP_NO(Integer.parseInt(data[3].toString()));
+                        arlo.setSTART_DATE(data[5].toString());
+                        arlo.setEND_DATE(data[6].toString());
+                        arlo.setTICKET_TYPE(data[7].toString());
+                        arlo.setTICKET_TYPE_SEQ(data[8].toString());
+                        arlo.setTICKET_COPIES_QTY(Integer.parseInt(data[9].toString()));
+                        arlo.setCR_TERMS_CODE(Integer.parseInt(data[10].toString()));
+                        arlo.setCR_STATUS_CODE(data[11].toString());
 
-                    arlo.setPRODUCT_TYPE(data[11].toString());
-                    arlo.setSTORE_NAME(data[45].toString());
-                    arlo.setSTORE_ADDRESS_1(data[46].toString());
-                    arlo.setSTORE_ADDRESS_2(data[47].toString());
-                    arlo.setSTORE_CITY_NAME(data[49].toString());
-                    arlo.setSTORE_STATE_CODE(data[50].toString());
-                    arlo.setSTORE_ZIP_CODE(data[51].toString());
-                    arlo.setDEPT_NAME(data[58].toString());
+                        arlo.setPRODUCT_TYPE(data[12].toString());
+                        arlo.setSTORE_NAME(data[45].toString());
+                        arlo.setSTORE_ADDRESS_1(data[46].toString());
+                        arlo.setSTORE_ADDRESS_2(data[47].toString());
+                        arlo.setSTORE_CITY_NAME(data[49].toString());
+                        arlo.setSTORE_STATE_CODE(data[50].toString());
+                        arlo.setSTORE_ZIP_CODE(data[51].toString());
+                        arlo.setDEPT_NAME(data[58].toString());
 
-                    allArloRaw.add(arlo);
-                    Log.e("Data =", ""+data[0] + ", " + data[1] +" Length=" + String.valueOf(data.length));
+                        arlo.setSERVICED(Integer.parseInt(data[59].toString()));
+                        arlo.setMAXIMUM_DUE_BILL(Double.parseDouble(data[61].toString()));
+                        arlo.setBALANCE_AMT(Double.parseDouble(data[62].toString()));
+                        arlo.setTICKET_SURCHARGE_AMT(Double.parseDouble(data[63].toString()));
+                        arlo.setSALES_TAX_RATE(Double.parseDouble(data[68].toString()));
+
+                        allArloRaw.add(arlo);
+                        Log.e("Data =", "" + data[0] + ", " + data[1] + " Length=" + String.valueOf(data.length));
+                    }
+                    cnt ++;
                 }catch (Exception e){
                     Log.e("Problem", e.toString());
                 }
