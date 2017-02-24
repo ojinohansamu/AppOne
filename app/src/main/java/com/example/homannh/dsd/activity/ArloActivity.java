@@ -1,8 +1,14 @@
 package com.example.homannh.dsd.activity;
 
 /*
+Note This changes 2-23 was not complete yet, please check the MarketListViewActivity when creating Market from raw
+H. Homann 2-23-2017
+ 1. Added some custom listviews for Markets and Arlos. MarketListViewActivity and ArloListViewActivity
+ 2. Added sub menu MiscMenu
+ 3. Added MarketDAO, IMarketDAO and MarketDTO and build the market id.
+
 H. Homann 2-21-2017
- 1. Create OfflineArloDAO and interface IOfflineArloDAO. Create method to create ARLO_TABLE
+ 1. Created OfflineArloDAO and interface IOfflineArloDAO. Create method to create ARLO_TABLE
     https://www.youtube.com/watch?v=YxsW1u5FChk
  2. Use these OfflineDAO to fill ARLO_TABLE checking a set first, so we wont create duplicate. As on this video
     https://www.youtube.com/watch?v=gvzGUWhwnfs

@@ -24,4 +24,24 @@
     <string name="lblCity">City</string>
     <string name="lblArloNo">Arlo No</string>
     <string name="lblStopNo">Stop No</string>
+    <string name="lblDisplayStops">View Stops</string>
+    <string name="lblDisplayArlos">View Stops</string>
+    <string name="lblDisplayMarkets">View Markets</string>
+    <string name="lblDisplayProducts">View Products</string>
+    <string-array name="arlos">
+        <item>Stop and Shops 1</item>
+        <item>Stop and Shops 2</item>
+        <item>Walmarts 1</item>
+        <item>Kings</item>
+        <item>Walmarts 3</item>
+        <item>Walmarts 4</item>
+        <item>Walmarts 2</item>
+        <item>Shoprite 1</item>
+        <item>Shoprite 2</item>
+        <item>Shoprite 3</item>
+        <item>Stop and Shops 3</item>
+        <item>Stop and Shops 4</item>
+        <item>Stop and Shops 5</item>
+        <item>Walmarts 6</item>
+    </string-array>
 </resources>

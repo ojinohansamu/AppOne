@@ -24,4 +24,9 @@ public class DSDMainMenuActivity extends AppCompatActivity {
         Intent arloActivity = new Intent(this, ArloActivity.class);
         startActivity(arloActivity);
     }
+
+    public void btnMiscellaneousClicked(View view){
+        Intent dsdMiscMenuActivity = new Intent(this, DSDMiscMenuActivity.class);
+        startActivity(dsdMiscMenuActivity);
+    }
 }

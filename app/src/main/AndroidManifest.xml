@@ -25,7 +25,11 @@
         <activity android:name="com.example.homannh.dsd.activity.DSDActivity" />
         <activity android:name="com.example.homannh.dsd.activity.DSDMainMenuActivity" />
         <activity android:name="com.example.homannh.camera.CameraActivity" />
-        <activity android:name="com.example.homannh.dsd.activity.ArloActivity"></activity>
+        <activity android:name="com.example.homannh.dsd.activity.ArloActivity" />
+        <activity android:name="com.example.homannh.dsd.activity.DSDMiscMenuActivity" />
+        <activity android:name="com.example.homannh.dsd.activity.ArloListViewActivity" />
+        <activity android:name="com.example.homannh.dsd.activity.ListViewClickedActivity" />
+        <activity android:name="com.example.homannh.dsd.activity.MarketListViewActivity"></activity>
     </application>
 
 </manifest>
