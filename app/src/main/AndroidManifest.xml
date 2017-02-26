@@ -14,22 +14,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.homannh.gps.GPSActivity" />
-        <activity android:name="com.example.homannh.dsd.activity.DSDActivity" />
-        <activity android:name="com.example.homannh.dsd.activity.DSDMainMenuActivity" />
-        <activity android:name="com.example.homannh.camera.CameraActivity" />
-        <activity android:name="com.example.homannh.dsd.activity.ArloActivity" />
-        <activity android:name="com.example.homannh.dsd.activity.DSDMiscMenuActivity" />
-        <activity android:name="com.example.homannh.dsd.activity.ArloListViewActivity" />
-        <activity android:name="com.example.homannh.dsd.activity.ListViewClickedActivity" />
-        <activity android:name="com.example.homannh.dsd.activity.MarketListViewActivity"></activity>
+        <activity android:name="com.example.homannh.gps.GPSActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.homannh.dsd.activity.DSDActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.homannh.dsd.activity.DSDMainMenuActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.homannh.camera.CameraActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.homannh.dsd.activity.ArloActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.example.homannh.dsd.activity.DSDMiscMenuActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.example.homannh.dsd.activity.ArloListViewActivity"/>
+        <activity android:name="com.example.homannh.dsd.activity.ListViewClickedActivity"/>
+        <activity android:name="com.example.homannh.dsd.activity.MarketListViewActivity" />
+        <activity android:name="com.example.homannh.dsd.activity.ProductListView"></activity>
     </application>
 
 </manifest>

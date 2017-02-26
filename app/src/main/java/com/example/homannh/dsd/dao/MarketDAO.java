@@ -19,12 +19,12 @@ import java.util.List;
 //public class MarketDAO extends SQLiteOpenHelper{
 public class MarketDAO extends WinHHDAO implements IMarketDAO{
 
-    public MarketDAO(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, "winhh.db", factory, 1);
+    public MarketDAO(Context context) {
+        super(context);
     }
 
     @Override
-    public void save(MarketDTO marketDTO) throws Exception {
+    public void insert(MarketDTO marketDTO) throws Exception {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(MARKET_ID, marketDTO.getMARKET_ID());
@@ -39,14 +39,12 @@ public class MarketDAO extends WinHHDAO implements IMarketDAO{
         String sqlStmt = "CREATE TABLE IF NOT EXISTS " + MARKET_TABLE + " ( " + _ID_MARKET + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 MARKET_ID + " TEXT, " + MARKET_DESCRIPTION + " TEXT " + ");";
         getWritableDatabase().execSQL(sqlStmt);
-
-        return;
     }
 
     @Override
     public int countsMarkets() {
         int noOfMarkets = 0;
-        String sqlStmt = "SELECT (*) FROM " + MARKET_TABLE;
+        String sqlStmt = "SELECT COUNT(*) FROM " + MARKET_TABLE;
         Cursor cursor = getReadableDatabase().rawQuery(sqlStmt, null);
         if(cursor.getCount()>0)
         {
@@ -56,6 +54,38 @@ public class MarketDAO extends WinHHDAO implements IMarketDAO{
 
         cursor.close();
         return noOfMarkets;
+    }
+
+    @Override
+    public List<MarketDTO> fetchMarkets(String searchTerm) {
+        String sql = "SELECT * FROM " + MARKET_TABLE + " ORDER BY " + MARKET_ID;
+        List<MarketDTO> allMarkets = new ArrayList<MarketDTO>();
+
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+        if(cursor.getCount()>0)
+        {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast())
+            {
+                MarketDTO aMarket = new MarketDTO();
+                // or we can do as below, it is better aMarket.setMARKET_ID(cursor.getString(1));
+                aMarket.setMARKET_ID(cursor.getString(cursor.getColumnIndex(MARKET_ID)));
+
+                // or we can do as below, it is better  aMarket.setMARKET_DESCRIPTION(cursor.getString(2));
+                aMarket.setMARKET_DESCRIPTION(cursor.getString(cursor.getColumnIndex(MARKET_DESCRIPTION)));
+
+                allMarkets.add(aMarket);
+
+                cursor.moveToNext();
+            }
+        }
+
+
+
+        cursor.close();
+
+        return allMarkets;
+
     }
 
 }

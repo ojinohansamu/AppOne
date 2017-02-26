@@ -11,7 +11,7 @@ public class WinHHDAO extends SQLiteOpenHelper {
 
     //Arlo table
     public static final String ARLO_TABLE = "ARLO";
-    public static final String _ID = "_ID";
+    public static final String _ID_ARLO= "_ID_ARLO";
     public static final String GUID_CUSTOMER = "GUID_CUSTOMER";
     public static final String CUSTOMER_ID = "CUSTOMER_ID";
     public static final String ARLO_NO = "ARLO_NO";
@@ -89,16 +89,75 @@ public class WinHHDAO extends SQLiteOpenHelper {
     public static final String MARKET_ID = "MARKET_ID";
     public static final String MARKET_DESCRIPTION = "MARKET_DESCRIPTION";
 
+    //Route Table
+    public static final String ROUTE_TABLE = "ROUTE";
+    public static final String _ID_ROUTE = "_ID_ROUTE";
+    public static final String ROUTE_ID = "ROUTE_ID";
+    public static final String ROUTE_NAME = "ROUTE_NAME";
+    public static final String ROUTE_TYPE = "ROUTE_TYPE";
+    public static final String DISPLAY_PRICE_IND = "DISPLAY_PRICE_IND";
+    public static final String DEX_SIGNATURE_CODE = "DEX_SIGNATURE_CODE";
+    public static final String LOAD_SECURITY_CODE = "LOAD_SECURITY_CODE";
+    public static final String RETURN_SECURITY_CODE = "RETURN_SECURITY_CODE";
+    public static final String COMMUNICATION_SECURITY_CODE = "COMMUNICATION_SECURITY_CODE";
+    public static final String DNL_DATE = "DNL_DATE";
+    public static final String INVOICE_MARKET_ID = "INVOICE_MARKET_ID";
+    public static final String SLF_PLUS_IND = "SLF_PLUS_IND";
+    public static final String STD_ORD_CONTROL_CODE = "STD_ORD_CONTROL_CODE";
+    public static final String OVERSELL_LOAD_IND = "OVERSELL_LOAD_IND";
+    public static final String DEPOT_NAME = "DEPOT_NAME";
+    public static final String UNLOCK_STOPS_IND = "UNLOCK_STOPS_IND";
+    public static final String PRESET_ORDER_IND = "PRESET_ORDER_IND";
+    public static final String ORDER_CHANGE_CODE = "ORDER_CHANGE_CODE";
+    public static final String ROUTE_LEVEL_ORDER_IND = "ROUTE_LEVEL_ORDER_IND";
+    public static final String SCREEN_SECURITY_CODE = "SCREEN_SECURITY_CODE";
+    public static final String COMM_TIME = "COMM_TIME";
+    public static final String DISABLE_ADD_CO_IND = "DISABLE_ADD_CO_IND";
+    public static final String ADDITIONAL_CONTROLS_IND = "ADDITIONAL_CONTROLS_IND";
+    public static final String ZERO_DISTRIBUTION_IND = "ZERO_DISTRIBUTION_IND";
+    public static final String DELAYED_CASH_IND = "DELAYED_CASH_IND";
+    public static final String DEF_RET_LOCATION = "DEF_RET_LOCATION";
 
-    public WinHHDAO(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    //Product Table
+    public static final String PRODUCT_TABLE = "PRODUCT";
+    public static final String _ID_PRODUCT = "_ID_PRODUCT";
+    public static final String PRODUCT_ID = "PRODUCT_ID";
+    public static final String ITEM_NO = "ITEM_NO";
+    public static final String COMPANY_CODE = "COMPANY_CODE";
+    public static final String UPC_CODE = "UPC_CODE";
+    public static final String SUB_UPC_CODE = "SUB_UPC_CODE";
+    public static final String PRODUCT_GROUP_CODE = "PRODUCT_GROUP_CODE";
+    public static final String PRODUCT_CAT_CODE = "PRODUCT_CAT_CODE";
+    public static final String FINANCIAL_CAT_CODE = "FINANCIAL_CAT_CODE";
+    public static final String PRODUCT_DESC = "PRODUCT_DESC";
+    public static final String SHELF_LIFE_DAY_1 = "SHELF_LIFE_DAY_1";
+    public static final String SHELF_LIFE_DAY_2 = "SHELF_LIFE_DAY_2";
+    public static final String SHELF_LIFE_DAY_3 = "SHELF_LIFE_DAY_3";
+    public static final String SHELF_LIFE_DAY_4 = "SHELF_LIFE_DAY_4";
+    public static final String SHELF_LIFE_DAY_5 = "SHELF_LIFE_DAY_5";
+    public static final String SHELF_LIFE_DAY_6 = "SHELF_LIFE_DAY_6";
+    public static final String SHELF_LIFE_DAY_7 = "SHELF_LIFE_DAY_7";
+    public static final String FORECAST_TYPE = "FORECAST_TYPE";
+    public static final String RETURNS_ALLOWED_IND = "RETURNS_ALLOWED_IND";
+    public static final String SPREAD_GROUP = "SPREAD_GROUP";
+    public static final String SALES_ALLOWED_IND = "SALES_ALLOWED_IND";
+    public static final String FRESH_RETURNS_ALLOWED_IND = "FRESH_RETURNS_ALLOWED_IND";
+    public static final String DEX_COUNTRY_CODE = "DEX_COUNTRY_CODE";
+    public static final String DEX_PRODUCT_TYPE = "DEX_PRODUCT_TYPE";
+    public static final String PACK_SIZE_QTY = "PACK_SIZE_QTY";
+    public static final String NO_DNL_DATE = "NO_DNL_DATE";
+
+
+    public WinHHDAO(Context context) {
+        super(context, "winhh.db", null, 4);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) { //This one from implements IArloDAO
 
+        //Create ARLO Table
         String sql = "CREATE TABLE " + ARLO_TABLE + " (" +
-                _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GUID_CUSTOMER + " INTEGER, " + CUSTOMER_ID + " TEXT,"  +
+                _ID_ARLO + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GUID_CUSTOMER + " INTEGER, " + CUSTOMER_ID + " TEXT,"  +
                 ARLO_NO + " TEXT," + STORE_NO + " TEXT," + STOP_NO + " INTEGER," + ACCOUNT_NO + " TEXT," +
                 START_DATE + " TEXT," + END_DATE + " TEXT," + TICKET_TYPE + " TEXT," + TICKET_TYPE_SEQ + " TEXT," +
                 TICKET_COPIES_QTY + " INTEGER," + CR_TERMS_CODE + " INTEGER," + CR_STATUS_CODE + " TEXT," + PRODUCT_TYPE + " TEXT," +
@@ -119,18 +178,45 @@ public class WinHHDAO extends SQLiteOpenHelper {
                 SALES_TAX_RATE + " TEXT"
                 + " );";
 
-
         db.execSQL(sql);
 
+        //Create Market Table
         sql = "CREATE TABLE " + MARKET_TABLE + " ( " + _ID_MARKET + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MARKET_ID + " TEXT, " + MARKET_DESCRIPTION
                 + " TEXT " + ");";
         db.execSQL(sql);
+
+        //Create Route Table
+        sql = "CREATE TABLE " + ROUTE_TABLE + "(" + _ID_ROUTE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MARKET_ID + " TEXT, " + ROUTE_ID + " TEXT, " + ROUTE_NAME + " TEXT, " + ROUTE_TYPE + " TEXT, "
+                + DISPLAY_PRICE_IND + " TEXT, " + DEX_SIGNATURE_CODE + " TEXT, " + LOAD_SECURITY_CODE + " TEXT, " + RETURN_SECURITY_CODE + " TEXT, " + COMMUNICATION_SECURITY_CODE + " TEXT, "
+                + DNL_DATE + " TEXT, " + INVOICE_MARKET_ID + " TEXT, " + SLF_PLUS_IND + " TEXT, " + STD_ORD_CONTROL_CODE + " TEXT, " + OVERSELL_LOAD_IND + " TEXT, "
+                + DEPOT_NAME + " TEXT, " + UNLOCK_STOPS_IND + " TEXT, " + PRESET_ORDER_IND + " TEXT, " + ORDER_CHANGE_CODE + " TEXT, " + ROUTE_LEVEL_ORDER_IND + " TEXT, "
+                + SCREEN_SECURITY_CODE + " TEXT, " + COMM_TIME + " TEXT, " + DISABLE_ADD_CO_IND + " TEXT, " + ADDITIONAL_CONTROLS_IND + " TEXT, " + ZERO_DISTRIBUTION_IND + " TEXT, "
+                + DELAYED_CASH_IND + " TEXT, "+ DEF_RET_LOCATION + " TEXT"
+                + ");";
+
+        db.execSQL(sql);
+
+        //Create Product Table
+
+        sql = "CREATE TABLE " + PRODUCT_TABLE + "(" + _ID_PRODUCT + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_ID + " TEXT, " + ITEM_NO + " TEXT, " + COMPANY_CODE + " TEXT, " + UPC_CODE + " TEXT, "
+                + SUB_UPC_CODE + " TEXT, " + PRODUCT_GROUP_CODE + " TEXT, " + PRODUCT_CAT_CODE + " TEXT, " + FINANCIAL_CAT_CODE + " TEXT, " + PRODUCT_DESC + " TEXT, "
+                + SHELF_LIFE_DAY_1 + " INTEGER, " + SHELF_LIFE_DAY_2 + " INTEGER, " + SHELF_LIFE_DAY_3 + " INTEGER, " + SHELF_LIFE_DAY_4 + " INTEGER, " + SHELF_LIFE_DAY_5 + " INTEGER, "
+                + SHELF_LIFE_DAY_6 + " INTEGER, " + SHELF_LIFE_DAY_7 + " INTEGER, "
+                + FORECAST_TYPE + " TEXT, " + RETURNS_ALLOWED_IND + " TEXT, " + SPREAD_GROUP + " TEXT, " + SALES_ALLOWED_IND + " TEXT, " + FRESH_RETURNS_ALLOWED_IND + " TEXT, "
+                + DEX_COUNTRY_CODE + " TEXT, " + DEX_PRODUCT_TYPE + " TEXT, " + PACK_SIZE_QTY + " TEXT, " + NO_DNL_DATE + " TEXT"
+                + ");";
+
+        db.execSQL(sql);
+
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + ARLO_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + MARKET_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + ROUTE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + PRODUCT_TABLE);
         onCreate(db);
 
     }

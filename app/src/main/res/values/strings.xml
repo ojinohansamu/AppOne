@@ -44,4 +44,20 @@
         <item>Stop and Shops 5</item>
         <item>Walmarts 6</item>
     </string-array>
+    <string-array name="address">
+        <item>Address 1</item>
+        <item>Address 2</item>
+        <item>Address 3</item>
+        <item>Address 4</item>
+        <item>Address 5</item>
+        <item>Address 6</item>
+        <item>Address 7</item>
+        <item>Address 8</item>
+        <item>Address 9</item>
+        <item>Address 10</item>
+        <item>Address 11</item>
+        <item>Address 12</item>
+        <item>Address 13</item>
+        <item>Address 14</item>
+    </string-array>
 </resources>

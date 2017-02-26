@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.homannh.appone.R;
@@ -32,66 +33,21 @@ public class MarketListViewActivity extends AppCompatActivity {
         toolBar = (Toolbar) findViewById(R.id.toolbar);
         toolBar.setTitle("Markets");
         marketListView = (ListView) findViewById(R.id.listViewMarket);
+        ReadMarkets();
 
     }
 
-    public void ReadAllMarkets(){
+    public void ReadMarkets(){
 
         List<MarketDTO> allMarkets = new ArrayList<MarketDTO>();
-        IMarketDAO marketDAO = new MarketDAO(MarketListViewActivity.this, "Winhh.db", null, 1);
-        if(marketDAO.countsMarkets() > 0)
-        {}
-        else
-        {
-            allMarkets = LoadMarketRaw();
-            for (MarketDTO market : allMarkets){
-                //marketDAO.save();
-            }
-
-
-        }
-
+        IMarketDAO marketDAO = new MarketDAO(MarketListViewActivity.this);
+        allMarkets = marketDAO.fetchMarkets("");
+        // now try to get to the listview adapter
+        //
+        ArrayAdapter<MarketDTO> marketAdapter =
+                new ArrayAdapter<MarketDTO>(MarketListViewActivity.this.getApplicationContext(), android.R.layout.simple_list_item_1, allMarkets);
+        marketListView.setAdapter(marketAdapter);
     }
-
-    public List<MarketDTO>LoadMarketRaw(){
-        InputStream inputStream;
-        String[] data;
-
-        List<MarketDTO> allMarketRaw = new ArrayList<MarketDTO>();
-        inputStream = getResources().openRawResource(R.raw.market);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        try{
-            String csvLine;
-            int cnt = 0;
-
-            while ((csvLine = reader.readLine()) != null)
-            {
-                data = csvLine.split(",");
-                try
-                {
-                    if(cnt>0)
-                    {
-                        MarketDTO market = new MarketDTO();
-                        market.setMARKET_ID(data[0].toString());
-                        market.setMARKET_DESCRIPTION((data[1].toString()));
-                        allMarketRaw.add(market);
-                    }
-                    cnt++;
-
-                }catch (Exception e){
-                    Log.e("Problem", e.toString());
-                }
-            }
-
-        }
-        catch (IOException eX){
-            throw new RuntimeException("Error in reading CSV file: " + eX.toString());
-        }
-
-
-        return allMarketRaw;
-    }
-
 
 }
 

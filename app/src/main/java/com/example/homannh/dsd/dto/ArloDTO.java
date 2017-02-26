@@ -8,7 +8,7 @@ import android.view.ViewDebug;
 
 public class ArloDTO {
 
-    long _ID;
+    long _ID_ARLO;
     long GUID_CUSTOMER;
     String CUSTOMER_ID;
     String ARLO_NO;
@@ -85,12 +85,12 @@ public class ArloDTO {
         return CUSTOMER_ID + " " + ARLO_NO + " " + STORE_NAME + " " + STORE_ADDRESS_1;
     }
 
-    public long get_ID() {
-        return _ID;
+    public long get_ID_ARLO() {
+        return _ID_ARLO;
     }
 
-    public void set_ID(long _ID) {
-        this._ID = _ID;
+    public void _ID_ARLO(long _ID_ARLO) {
+        this._ID_ARLO = _ID_ARLO;
     }
 
     public long getGUID_CUSTOMER() {

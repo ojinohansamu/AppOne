@@ -4,21 +4,27 @@
     android:id="@+id/activity_dsd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#f1f1f1"
     tools:context="com.example.homannh.dsd.activity.DSDActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c1c1c1"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/toolbarLogIn" />
 
     <TextView
         android:text="@string/lblUserID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
+        android:layout_below="@id/toolbarLogIn"
         android:id="@+id/lblLogin"
         android:textSize="18sp"
-        android:layout_alignParentTop="true"
+
         android:layout_alignRight="@+id/lblPassword"
         android:layout_alignEnd="@+id/lblPassword" />
 
@@ -31,12 +37,13 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/lblLogin"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:text="@string/lblBlank"
         android:ems="10"
         android:layout_alignBottom="@+id/lblLogin"
@@ -44,30 +51,9 @@
         android:layout_toEndOf="@+id/lblLogin"
         android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
-        android:id="@+id/txtLogin" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberPassword"
-        android:ems="10"
-        android:layout_below="@+id/txtLogin"
-        android:layout_alignLeft="@+id/txtLogin"
-        android:layout_alignStart="@+id/txtLogin"
-        android:id="@+id/txtPassword"
-        android:text="@string/lblBlank" />
-
-    <Button
-        android:text="@string/lblLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:id="@+id/btnLogin"
-        android:layout_below="@+id/txtPassword"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="btnLoginOnClicked"
-        android:background="@drawable/button_short" />
+        android:id="@+id/lblUserValue"
+        android:layout_alignTop="@+id/lblLogin"
+        android:textSize="18sp" />
 
     <Button
         android:text="@string/lblExit"
@@ -75,8 +61,35 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="14dp"
+        android:layout_marginLeft="20dp"
         android:id="@+id/btnExit"
         android:onClick="btnExitOnClicked"
         android:background="@drawable/button_short" />
+
+    <Button
+        android:text="@string/lblLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:id="@+id/btnLogin"
+        android:onClick="btnLoginOnClicked"
+        android:background="@drawable/button_short"
+        android:layout_below="@+id/lblPassword"
+        android:layout_marginLeft="80dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="80dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberPassword"
+        android:ems="10"
+        android:id="@+id/txtPassword"
+        android:text="@string/lblBlank"
+        android:layout_alignBaseline="@+id/lblPassword"
+        android:layout_alignBottom="@+id/lblPassword"
+        android:layout_alignLeft="@+id/lblUserValue"
+        android:layout_alignStart="@+id/lblUserValue" />
 
 </RelativeLayout>

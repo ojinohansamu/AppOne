@@ -36,6 +36,7 @@ import android.widget.Toast;
 
 
 import com.example.homannh.appone.R;
+import com.example.homannh.dsd.dao.ArloDAO;
 import com.example.homannh.dsd.dao.ArloDAOStub;
 import com.example.homannh.dsd.dao.IArloDAO;
 import com.example.homannh.dsd.dao.IOfflineArloDAO;
@@ -113,7 +114,7 @@ public class ArloActivity extends AppCompatActivity implements GoogleApiClient.C
         @Override
         protected List<ArloDTO> doInBackground(String... params) {
 
-            IArloDAO arloDAO = new ArloDAOStub();
+            IArloDAO arloDAO = new ArloDAO(ArloActivity.this);
             List<ArloDTO> allArlos = new ArrayList<ArloDTO>();
 
             IOfflineArloDAO offlineArloDAO = new OfflineArloDAO(ArloActivity.this);
@@ -127,17 +128,12 @@ public class ArloActivity extends AppCompatActivity implements GoogleApiClient.C
                     offlineArloDAO.insert(arlo);
                     noArlos ++;
                 }
-
-
-
             }
             else
                allArlos = arloDAO.fetchArlos(params[0]);
 
             return allArlos;
         }
-
-
 
     }
 

@@ -4,44 +4,48 @@
     android:id="@+id/activity_dsdmain_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#f1f1f1"
     tools:context="com.example.homannh.dsd.activity.DSDMainMenuActivity">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/lblRoutinfoID"
-        android:textSize="18sp" />
+        android:background="#c1c1c1"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/toolbarLogIn" />
 
     <TextView
         android:text="TextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lblRoutinfoID"
-        android:layout_alignLeft="@+id/lblRoutinfoID"
-        android:layout_alignStart="@+id/lblRoutinfoID"
-        android:id="@+id/lblRoutinfoName"
-        android:textSize="18sp" />
+        android:id="@+id/lblRoutinfoID"
+        android:textSize="18sp"
+        android:layout_below="@+id/toolbarLogIn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="15dp"
+        tools:textStyle="bold"
+        tools:textAlignment="center" />
 
     <Button
         android:text="@string/lblAdjustments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/btnAdjustment"
-        android:layout_below="@+id/lblRoutinfoName"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/lblRoutinfoID"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="20dp"
         android:textSize="18sp"
         android:background="@drawable/button_long"
         android:onClick="btnAdjutmentClicked" />
-
 
     <Button
         android:text="@string/lblSales"
@@ -50,10 +54,13 @@
         android:layout_marginTop="20dp"
         android:id="@+id/btnSales"
         android:layout_below="@+id/btnAdjustment"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="20dp"
         android:textSize="18sp"
-        android:background="@drawable/button_long" />
+        android:background="@drawable/button_long"
+        android:onClick="btnSalesClicked" />
 
 
     <Button
@@ -63,10 +70,13 @@
         android:layout_marginTop="20dp"
         android:id="@+id/btnOrders"
         android:layout_below="@+id/btnSales"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="20dp"
         android:textSize="18sp"
-        android:background="@drawable/button_long" />
+        android:background="@drawable/button_long"
+        android:onClick="btnOrdersClicked" />
 
     <Button
         android:text="@string/lblEndOfTheDay"
@@ -75,10 +85,13 @@
         android:layout_marginTop="20dp"
         android:id="@+id/btnEndOfDay"
         android:layout_below="@+id/btnOrders"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="20dp"
         android:textSize="18sp"
-        android:background="@drawable/button_long" />
+        android:background="@drawable/button_long"
+        android:onClick="btnEndOfDayClicked" />
 
     <Button
         android:text="@string/lblMiscellaneous"
@@ -86,8 +99,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnMiscellaneous"
         android:layout_below="@+id/btnEndOfDay"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:textSize="18sp"
         android:background="@drawable/button_long"
@@ -100,11 +115,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnExit"
         android:layout_below="@+id/btnMiscellaneous"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:textSize="18sp"
         android:background="@drawable/button_long"
         android:onClick="btnExitOnClicked" />
+
+
 
 </RelativeLayout>

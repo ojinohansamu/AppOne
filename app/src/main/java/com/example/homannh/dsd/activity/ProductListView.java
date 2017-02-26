@@ -1,59 +1,41 @@
 package com.example.homannh.dsd.activity;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.homannh.appone.R;
-import com.example.homannh.dsd.dao.ArloDAO;
-import com.example.homannh.dsd.dao.IArloDAO;
-import com.example.homannh.dsd.dto.ArloDTO;
+import com.example.homannh.dsd.dao.IProductDAO;
+import com.example.homannh.dsd.dao.ProductDAO;
+import com.example.homannh.dsd.dto.ProductDTO;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SimpleTimeZone;
 
-public class ArloListViewActivity extends AppCompatActivity {
+public class ProductListView extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private ListView listViewMain;
+    private ListView listViewProducts;
+    private Toolbar tooBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arlo_list_view);
+        setContentView(R.layout.activity_product_list_view);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Stops");
-        listViewMain = (ListView) findViewById(R.id.listViewMain);
-        listViewMain.setAdapter(new MyCustomAdapter(this));
+        listViewProducts = (ListView) findViewById(R.id.listViewProducts);
+        tooBar = (Toolbar) findViewById(R.id.toolbarLogIn);
+        tooBar.setTitle("Products");
 
- /*       ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(ArloListViewActivity.this, android.R.layout.simple_list_item_1,
-                getResources().getStringArray(R.array.arlos));
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent listViewClickedActivity = new Intent(ArloListViewActivity.this, ListViewClickedActivity.class);
-                listViewClickedActivity.putExtra("ArloName", listView.getItemAtPosition(position).toString());
-                startActivity(listViewClickedActivity);
-
-            }
-        });
-        listView.setAdapter(mAdapter); */
+        listViewProducts.setAdapter(new MyCustomAdapter(this));
     }
+
 
     class SingleRow
     {
@@ -75,13 +57,14 @@ public class ArloListViewActivity extends AppCompatActivity {
         {
             ctx = context;
             myList = new ArrayList<SingleRow>();
-            List<ArloDTO> allArlos = new ArrayList<ArloDTO>();
-            IArloDAO arloDAO = new ArloDAO(ctx);
-            String sql = "SELECT * FROM ARLO GROUP BY STORE_NO ORDER BY STOP_NO ";
-            allArlos = arloDAO.getArlosBySQL(sql);
+            List<ProductDTO> someProducts = new ArrayList<ProductDTO>();
+            IProductDAO productDAO = new ProductDAO(ctx);
+            String sql = "SELECT * FROM PRODUCT ORDER BY ITEM_NO ";
+            someProducts = productDAO.getProductsByYourSQL(sql);
 
-            for (ArloDTO arlo : allArlos) {
-                SingleRow singleRowAdapter = new SingleRow(arlo.getSTORE_NAME(), arlo.getSTORE_ADDRESS_1() + ", " + arlo.getSTORE_CITY_NAME());
+            for (ProductDTO aProduct : someProducts) {
+                SingleRow singleRowAdapter = new SingleRow("UPC: " + aProduct.getCOMPANY_CODE() + aProduct.getUPC_CODE() + "   " + aProduct.getPRODUCT_DESC(),
+                        "ITEM: " + aProduct.getITEM_NO());
                 myList.add(singleRowAdapter);
             }
         }

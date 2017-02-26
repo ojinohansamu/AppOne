@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by HOH on 2/20/2017.
@@ -61,6 +62,31 @@ public class ArloDAOStub implements IArloDAO {
         allArlos.add(arlo3);
 
         return allArlos;
+    }
+
+    @Override
+    public List<ArloDTO> getArlosBySQL(String yourSQL) {
+        return null;
+    }
+
+    @Override
+    public void insert(ArloDTO arlo) {
+
+    }
+
+    @Override
+    public void IsArloExist() {
+
+    }
+
+    @Override
+    public int countArlos() {
+        return 0;
+    }
+
+    @Override
+    public Set<Integer> fetchAllArloGuids() {
+        return null;
     }
 
     /*

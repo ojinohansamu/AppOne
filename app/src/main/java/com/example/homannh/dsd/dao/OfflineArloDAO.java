@@ -25,7 +25,7 @@ public class OfflineArloDAO extends WinHHDAO implements IOfflineArloDAO {
     // that's why we have to create our own as a method below
     public OfflineArloDAO(Context ctx){
 
-        super(ctx, "winhh.db", null, 1); //-> SQLiteOpenHelper needs 4 parms, COntent of this activity, db name, null, version no.
+        super(ctx); //-> SQLiteOpenHelper needs 4 parms, COntent of this activity, db name, null, version no.
 
        /* H. Homann 02-22-2017 Tried to use SD card but failed. Don't know why?????
         super(ctx, Environment.getExternalStorageDirectory()+
@@ -36,6 +36,11 @@ public class OfflineArloDAO extends WinHHDAO implements IOfflineArloDAO {
 
     @Override
     public List<ArloDTO> fetchArlos(String searchTerm) {
+        return null;
+    }
+
+    @Override
+    public List<ArloDTO> getArlosBySQL(String yourSQL) {
         return null;
     }
 
@@ -116,7 +121,12 @@ public class OfflineArloDAO extends WinHHDAO implements IOfflineArloDAO {
 
         //insert record to db
         long cacheID = getWritableDatabase().insert(ARLO_TABLE, CUSTOMER_ID, cv);
-        arlo.set_ID(cacheID);
+       //rlo.(cacheID);
+
+    }
+
+    @Override
+    public void IsArloExist() {
 
     }
 
