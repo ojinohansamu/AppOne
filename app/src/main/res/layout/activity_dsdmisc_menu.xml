@@ -4,8 +4,8 @@
     android:id="@+id/activity_dsdmisc_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f1f1f1"
     tools:context="com.example.homannh.dsd.activity.DSDMiscMenuActivity">
-
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -77,11 +77,26 @@
         android:onClick="btnDisplayProductsClicked" />
 
     <Button
+        android:text="@string/lblScanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnScannerTest"
+        android:layout_below="@+id/btnDisplayProducts"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:background="@drawable/button_long"
+        android:onClick="btnScannerTestClicked" />
+
+    <Button
         android:text="@string/lblExit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnExit"
-        android:layout_below="@+id/btnDisplayProducts"
+        android:layout_below="@+id/btnScannerTest"
         android:layout_marginLeft="20dp"
         android:layout_alignParentRight="false"
         android:layout_alignParentEnd="false"

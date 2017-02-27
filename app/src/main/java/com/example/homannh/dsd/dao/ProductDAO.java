@@ -177,7 +177,7 @@ public class ProductDAO extends WinHHDAO implements IProductDAO {
         if(upcCode.equals(null ))
             upcCode = "";
 
-        String sql = "SELECT * FROM " + PRODUCT_TABLE + " WHERE " +  COMPANY_CODE + "= '" + companyCode + "' AND " + UPC_CODE + "= '" + upcCode + "'";
+        String sql = "SELECT * FROM " + PRODUCT_TABLE + " WHERE " +  COMPANY_CODE + " = '" + companyCode + "' AND " + UPC_CODE + " = '" + upcCode + "'";
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();

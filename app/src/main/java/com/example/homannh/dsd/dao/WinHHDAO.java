@@ -9,6 +9,12 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class WinHHDAO extends SQLiteOpenHelper {
 
+
+    public WinHHDAO(Context context) {
+        super(context, "winhh.db", null, 6);
+    }
+    //HOH
+
     //Arlo table
     public static final String ARLO_TABLE = "ARLO";
     public static final String _ID_ARLO= "_ID_ARLO";
@@ -147,10 +153,15 @@ public class WinHHDAO extends SQLiteOpenHelper {
     public static final String PACK_SIZE_QTY = "PACK_SIZE_QTY";
     public static final String NO_DNL_DATE = "NO_DNL_DATE";
 
+    public static final String BASEPRICE_TABLE = "BASEPRICE";
+    public static final String _ID_BASEPRICE = "_ID_BASEPRICE";
+    public static final String EFFECTIVE_DATE = "EFFECTIVE_DATE";
+    public static final String WHOLESALE_PRICE = "WHOLESALE_PRICE";
+    public static final String RETAIL_PRICE = "RETAIL_PRICE";
+    public static final String DISTRIBUTOR_PRICE = "DISTRIBUTOR_PRICE";
+    public static final String DISTRIBUTOR_SPREAD_PER = "DISTRIBUTOR_SPREAD_PER";
+    public static final String DISTRIBUTOR_PROMO_PART_IND = "DISTRIBUTOR_PROMO_PART_IND";
 
-    public WinHHDAO(Context context) {
-        super(context, "winhh.db", null, 4);
-    }
 
     @Override
     public void onCreate(SQLiteDatabase db) { //This one from implements IArloDAO
@@ -208,6 +219,15 @@ public class WinHHDAO extends SQLiteOpenHelper {
 
         db.execSQL(sql);
 
+        //Create Baseprice Table
+
+        sql = "CREATE TABLE " + BASEPRICE_TABLE + "(" + _ID_BASEPRICE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EFFECTIVE_DATE + " TEXT, " + PRODUCT_ID + " TEXT, " + ITEM_NO + " TEXT, "
+                + WHOLESALE_PRICE + " DOUBLE, "  + RETAIL_PRICE + " DOUBLE, "  + DISTRIBUTOR_PRICE + " DOUBLE, "
+                + DISTRIBUTOR_SPREAD_PER + " DOUBLE, " + DISTRIBUTOR_PROMO_PART_IND + " TEXT "
+                + ");";
+
+        db.execSQL(sql);
+
 
     }
 
@@ -217,6 +237,7 @@ public class WinHHDAO extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + MARKET_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + ROUTE_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + PRODUCT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + BASEPRICE_TABLE);
         onCreate(db);
 
     }

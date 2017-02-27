@@ -19,7 +19,7 @@ import com.example.homannh.dsd.dto.ProductDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductListView extends AppCompatActivity {
+public class ProductListViewActivity extends AppCompatActivity {
 
     private ListView listViewProducts;
     private Toolbar tooBar;

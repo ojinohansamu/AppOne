@@ -12,7 +12,7 @@
     <string name="lblPassword">Password:</string>
     <string name="lblUserID">User ID:</string>
     <string name="lblExit">Exit</string>
-    <string name="lblDSD">D S D</string>
+    <string name="lblDSD">D.S.D. X-Cell Plus</string>
     <string name="lblAdjustments">Start of the day</string>
     <string name="lblSales">Sales</string>
     <string name="lblEndOfTheDay">End of Day</string>
@@ -28,6 +28,9 @@
     <string name="lblDisplayArlos">View Stops</string>
     <string name="lblDisplayMarkets">View Markets</string>
     <string name="lblDisplayProducts">View Products</string>
+    <string name="lblScanner">Scanner</string>
+    <string name="lblScan">Scan</string>
+    <string name="lblScannedUPC">UPC:</string>
     <string-array name="arlos">
         <item>Stop and Shops 1</item>
         <item>Stop and Shops 2</item>

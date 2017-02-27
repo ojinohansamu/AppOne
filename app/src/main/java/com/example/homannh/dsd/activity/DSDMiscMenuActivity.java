@@ -49,9 +49,15 @@ public class DSDMiscMenuActivity extends AppCompatActivity {
         startActivity(marketListViewActivity);
     }
     public void btnDisplayProductsClicked(View view){
-        Intent productListView = new Intent(this, ProductListView.class);
+        Intent productListView = new Intent(this, ProductListViewActivity.class);
         startActivity(productListView);
     }
+
+    public void btnScannerTestClicked(View view){
+        Intent scannerActivity = new Intent(this, ScannerActivity.class);
+        startActivity(scannerActivity);
+    }
+
 
     public void DisplayMessages(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();

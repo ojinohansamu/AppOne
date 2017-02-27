@@ -13,7 +13,9 @@ import android.widget.Toast;
 import com.example.homannh.appone.MainActivity;
 import com.example.homannh.appone.R;
 import com.example.homannh.dsd.dao.ArloDAO;
+import com.example.homannh.dsd.dao.BasepriceDAO;
 import com.example.homannh.dsd.dao.IArloDAO;
+import com.example.homannh.dsd.dao.IBasepriceDAO;
 import com.example.homannh.dsd.dao.IMarketDAO;
 import com.example.homannh.dsd.dao.IProductDAO;
 import com.example.homannh.dsd.dao.IRouteDAO;
@@ -21,6 +23,7 @@ import com.example.homannh.dsd.dao.MarketDAO;
 import com.example.homannh.dsd.dao.ProductDAO;
 import com.example.homannh.dsd.dao.RouteDAO;
 import com.example.homannh.dsd.dto.ArloDTO;
+import com.example.homannh.dsd.dto.BasepriceDTO;
 import com.example.homannh.dsd.dto.MarketDTO;
 import com.example.homannh.dsd.dto.ProductDTO;
 import com.example.homannh.dsd.dto.RouteDTO;
@@ -41,6 +44,7 @@ public class DSDActivity extends AppCompatActivity {
     private String routeID = "";
     private Toolbar toolBar;
     private RouteDTO _route;
+    private String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +54,7 @@ public class DSDActivity extends AppCompatActivity {
         txtUserPassword = (TextView) findViewById(R.id.txtPassword);
 
         toolBar = (Toolbar) findViewById(R.id.toolbarLogIn);
-        toolBar.setTitle("Direct Store Delivery");
+        toolBar.setTitle("D.S.D. X-Cell Plus");
         HouseKeeping();
         lblUserValue.setText(marketRouteID);
 
@@ -62,6 +66,7 @@ public class DSDActivity extends AppCompatActivity {
         CheckMarketTable();
         CheckArloTable();
         CheckProductTable();
+        CheckBasepriceTable();
     }
 
     public void btnExitOnClicked(View view){
@@ -70,7 +75,7 @@ public class DSDActivity extends AppCompatActivity {
     }
 
     public void btnLoginOnClicked(View view){
-        if(routeID.equals(txtUserPassword.getText().toString())) {
+        if(password.equals(txtUserPassword.getText().toString())) {
             Intent dsdMainMenuActivity = new Intent(this, DSDMainMenuActivity.class);
             dsdMainMenuActivity.putExtra("VAR_Routeinfo", _route.getMARKET_ID() + " " + _route.getROUTE_ID() + "  " + _route.getROUTE_NAME());
             //Does not work this is try to pass the RouteDTO dsdMainMenuActivity.putExtra("data", (Serializable) _route);
@@ -78,8 +83,8 @@ public class DSDActivity extends AppCompatActivity {
         }
         else
         {
+            Toast.makeText(this, "Invalid Password!", Toast.LENGTH_SHORT).show();
             txtUserPassword.setText("");
-            Toast.makeText(this, "Invalid Password!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -108,6 +113,7 @@ public class DSDActivity extends AppCompatActivity {
                 _route = aRoute;
                 break;
         }
+        password = new StringBuilder(routeID).reverse().toString();
      }
 
     private List<RouteDTO> LoadRouteRaw() {
@@ -360,7 +366,7 @@ public class DSDActivity extends AppCompatActivity {
         List<ProductDTO> allProducts = new ArrayList<ProductDTO>();
         IProductDAO productDAO = new ProductDAO(DSDActivity.this);
         productDAO.IsPoductExist();
-        if(productDAO.countProducts()>0)
+        if(productDAO.countProducts()>100)
         {}
         else
         {
@@ -437,5 +443,70 @@ public class DSDActivity extends AppCompatActivity {
 
         return allProductRaw;
     }
+
+    public void CheckBasepriceTable(){
+        List<BasepriceDTO> allBaseprice = new ArrayList<BasepriceDTO>();
+        IBasepriceDAO basepriceDAO = new BasepriceDAO(DSDActivity.this);
+        basepriceDAO.IsBasepriceExist();
+        if(basepriceDAO.countBaseprice()>0)
+        {}
+        else
+        {
+            allBaseprice = LoadBasepriceRaw();
+            for (BasepriceDTO aBaseprice : allBaseprice) {
+                try
+                {
+                    basepriceDAO.insert(aBaseprice);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+    private List<BasepriceDTO> LoadBasepriceRaw() {
+        InputStream inputStream;
+        String[] data;
+        List<BasepriceDTO> allBasepriceRaw = new ArrayList<BasepriceDTO>();
+        inputStream = getResources().openRawResource(R.raw.baseprice);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        try{
+            String csvLine;
+            int cnt = 0;
+
+            while ((csvLine = reader.readLine()) != null)
+            {
+                data = csvLine.split(",");
+                try
+                {
+                    if(cnt>0)
+                    {
+                        BasepriceDTO baseprice = new BasepriceDTO();
+                        baseprice.setEFFECTIVE_DATE(data[0].toString());
+                        baseprice.setPRODUCT_ID(data[1].toString());
+                        baseprice.setITEM_NO((data[2].toString()));
+                        baseprice.setWHOLESALE_PRICE (Double.parseDouble(data[3].toString()));
+                        baseprice.setRETAIL_PRICE (Double.parseDouble(data[4].toString()));
+                        baseprice.setDISTRIBUTOR_PRICE (Double.parseDouble(data[5].toString()));
+                        baseprice.setDISTRIBUTOR_SPREAD_PER (Double.parseDouble(data[6].toString()));
+                        baseprice.setDISTRIBUTOR_PROMO_PART_IND((data[7].toString()));
+                        allBasepriceRaw.add(baseprice);
+                    }
+                    cnt++;
+
+                }catch (Exception e){
+                    Log.e("Problem", e.toString());
+                }
+            }
+
+        }
+        catch (IOException eX){
+            throw new RuntimeException("Error in reading CSV file: " + eX.toString());
+        }
+
+        return allBasepriceRaw;
+    }
+
 
 }

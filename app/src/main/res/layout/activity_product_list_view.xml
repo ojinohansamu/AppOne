@@ -4,7 +4,7 @@
     android:id="@+id/activity_product_list_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.homannh.dsd.activity.ProductListView">
+    tools:context="com.example.homannh.dsd.activity.ProductListViewActivity">
 
 
     <android.support.v7.widget.Toolbar
