@@ -178,7 +178,7 @@ public class WinHHDAO extends SQLiteOpenHelper {
 
 
     public WinHHDAO(Context context) {
-        super(context, "winhh.db", null, 6);
+        super(context, "winhh.db", null, 3); //6);
     }
 
     @Override

@@ -10,8 +10,11 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +43,9 @@ public class ScannerActivity extends AppCompatActivity {
     private TextView lblDescription2;
     private TextView lblDescription3;
     private TextView lblDescription4;
+    private EditText txtUPC;
+    private String oldUPC;
+    private int startx = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +61,36 @@ public class ScannerActivity extends AppCompatActivity {
         lblDescription2 = (TextView) findViewById(R.id.lblDescription2);
         lblDescription3 = (TextView) findViewById(R.id.lblDescription3);
         lblDescription4 = (TextView) findViewById(R.id.lblDescription4);
+        txtUPC = (EditText) findViewById(R.id.txtUPC);
+        txtUPC.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startx  = start + count;
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(startx>9) {
+                    int i;
+                    if(startx>10)
+                        i = 0;
+                    else
+                     i = 1;
+                    String myUPC = txtUPC.getText().toString();
+                    String companyCode = myUPC.substring(1 - i, 6 - i);
+                    String upcCode = myUPC.substring(6 - i, 11-i);
+                    GetProduct(companyCode, upcCode);
+                    startx = 0;
+                    txtUPC.setText("");
+                }
+            }
+        });
 
         final Activity activity = this;
 
@@ -97,6 +133,10 @@ public class ScannerActivity extends AppCompatActivity {
     private void GetProduct(String companyCode, String upcCode) {
         boolean productFound = false;
         boolean priceFound = false;
+        lblDescription1.setText("");
+        lblDescription2.setText("");
+        lblDescription3.setText("");
+        lblDescription4.setText("");
         List<ProductDTO> anyProducts = new ArrayList<ProductDTO>();
         IProductDAO productDAO = new ProductDAO(ScannerActivity.this);
         ProductDTO scannedProduct = new ProductDTO();

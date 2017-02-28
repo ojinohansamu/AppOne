@@ -16,14 +16,17 @@ import com.example.homannh.dsd.dao.ArloDAO;
 import com.example.homannh.dsd.dao.BasepriceDAO;
 import com.example.homannh.dsd.dao.IArloDAO;
 import com.example.homannh.dsd.dao.IBasepriceDAO;
+import com.example.homannh.dsd.dao.IIvenadjDAO;
 import com.example.homannh.dsd.dao.IMarketDAO;
 import com.example.homannh.dsd.dao.IProductDAO;
 import com.example.homannh.dsd.dao.IRouteDAO;
+import com.example.homannh.dsd.dao.IvenadjDAO;
 import com.example.homannh.dsd.dao.MarketDAO;
 import com.example.homannh.dsd.dao.ProductDAO;
 import com.example.homannh.dsd.dao.RouteDAO;
 import com.example.homannh.dsd.dto.ArloDTO;
 import com.example.homannh.dsd.dto.BasepriceDTO;
+import com.example.homannh.dsd.dto.InvenadjDTO;
 import com.example.homannh.dsd.dto.MarketDTO;
 import com.example.homannh.dsd.dto.ProductDTO;
 import com.example.homannh.dsd.dto.RouteDTO;
@@ -67,6 +70,7 @@ public class DSDActivity extends AppCompatActivity {
         CheckArloTable();
         CheckProductTable();
         CheckBasepriceTable();
+        //CheckInvenadjTable();
     }
 
     public void btnExitOnClicked(View view){
@@ -88,6 +92,22 @@ public class DSDActivity extends AppCompatActivity {
         }
     }
 
+/*
+    private void CheckInvenadjTable() {
+        List<InvenadjDTO> allInvenadj = new ArrayList<InvenadjDTO>();
+        IIvenadjDAO invenadjDAO = new IvenadjDAO(DSDActivity.this);
+        invenadjDAO.IsInvenadjExist();
+        if(invenadjDAO.countInvenadj()>0)
+        {}
+        else
+        {
+            // Generate invenadj from cvs files
+            allInvenadj = LoadInvenadjRow();
+
+        }
+
+    }
+*/
     public void CheckRouteTable(){
         //Read Route
         List<RouteDTO> allroutes = new ArrayList<RouteDTO>();
@@ -199,6 +219,43 @@ public class DSDActivity extends AppCompatActivity {
         }
     }
 
+  /*  private List<InvenadjDTO> LoadInvenadjRow() {
+        InputStream inputstream;
+        String [] data;
+        List<InvenadjDTO> allInvenadjRaw = new ArrayList<InvenadjDTO>();
+        inputstream = getResources(R.raw.invenadj);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
+        try{
+            String csvLine;
+            int cnt = 0;
+
+            while ((csvLine = reader.readLine()) != null)
+            {
+                data = csvLine.split(",");
+                try
+                {
+                    if(cnt>0)
+                    {
+                        InvenadjDTO invenadj = new InvenadjDTO();
+                        invenadj.setINVENADJ_ID(Longdata[0].toString());
+                        invenadj.setMARKET_DESCRIPTION((data[1].toString()));
+                        allInvenadjRaw.add(invenadj);
+                    }
+                    cnt++;
+
+                }catch (Exception e){
+                    Log.e("Problem", e.toString());
+                }
+            }
+
+        }
+        catch (IOException eX){
+            throw new RuntimeException("Error in reading CSV file: " + eX.toString());
+        }
+
+        return allInvenadjRaw;
+    }
+*/
     public List<MarketDTO>LoadMarketRaw(){
         InputStream inputStream;
         String[] data;
