@@ -12,7 +12,7 @@
     <string name="lblPassword">Password:</string>
     <string name="lblUserID">User ID:</string>
     <string name="lblExit">Exit</string>
-    <string name="lblDSD">D.S.D. X-Cell Plus</string>
+    <string name="lblDSD">"D.S.D. "</string>
     <string name="lblAdjustments">Start of the day</string>
     <string name="lblSales">Sales</string>
     <string name="lblEndOfTheDay">End of Day</string>
