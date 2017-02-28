@@ -4,13 +4,13 @@
     android:id="@+id/activity_scanner"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f1f1f1"
+    android:background="#dbfce8"
     tools:context="com.example.homannh.dsd.activity.ScannerActivity">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#c1c1c1"
+        android:background="#01da58"
         android:theme="?attr/actionBarTheme"
         android:minHeight="?attr/actionBarSize"
         android:layout_alignParentTop="true"
@@ -114,11 +114,25 @@
         android:id="@+id/btnScan"
         android:background="@drawable/button_short"
         android:layout_below="@+id/lblDescription4"
-        android:layout_marginLeft="120dp"
-        android:layout_marginRight="120dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
         android:layout_alignParentRight="false"
-        android:layout_alignParentEnd="false" />
+        android:layout_alignParentEnd="false"
+        android:textSize="18sp" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName|number"
+        android:text="@string/lblBlank"
+        android:ems="10"
+        android:id="@+id/txtUPC"
+        android:layout_below="@+id/lblDescription4"
+        android:layout_alignRight="@+id/btnScan"
+        android:layout_alignEnd="@+id/btnScan"
+        tools:clickable="false"
+        android:selectAllOnFocus="false"
+        android:singleLine="true" />
 
 
 </RelativeLayout>
