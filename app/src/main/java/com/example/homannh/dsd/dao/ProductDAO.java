@@ -217,4 +217,50 @@ public class ProductDAO extends WinHHDAO implements IProductDAO {
         return someProducts;
     }
 
+    @Override
+    public List<ProductDTO> getProductsByItemNo(String itemNo){
+        List<ProductDTO> someProducts = new ArrayList<ProductDTO>();
+
+        if(itemNo.equals(null))
+            itemNo = "";
+
+        String sql = "SELECT * FROM " + PRODUCT_TABLE + " WHERE " +  ITEM_NO + " = '" + itemNo + "'";
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+                ProductDTO aProduct = new ProductDTO();
+                aProduct.setPRODUCT_ID(cursor.getString(cursor.getColumnIndex(PRODUCT_ID)));
+                aProduct.setITEM_NO (cursor.getString(cursor.getColumnIndex(ITEM_NO )));
+                aProduct.setCOMPANY_CODE (cursor.getString(cursor.getColumnIndex(COMPANY_CODE )));
+                aProduct.setUPC_CODE (cursor.getString(cursor.getColumnIndex(UPC_CODE )));
+                aProduct.setSUB_UPC_CODE (cursor.getString(cursor.getColumnIndex(SUB_UPC_CODE )));
+                aProduct.setPRODUCT_GROUP_CODE (cursor.getString(cursor.getColumnIndex(PRODUCT_GROUP_CODE )));
+                aProduct.setPRODUCT_CAT_CODE (cursor.getString(cursor.getColumnIndex(PRODUCT_CAT_CODE )));
+                aProduct.setFINANCIAL_CAT_CODE (cursor.getString(cursor.getColumnIndex( FINANCIAL_CAT_CODE)));
+                aProduct.setPRODUCT_DESC (cursor.getString(cursor.getColumnIndex(PRODUCT_DESC )));
+                aProduct.setSHELF_LIFE_DAY_1 (cursor.getInt(cursor.getColumnIndex(SHELF_LIFE_DAY_1)));
+                aProduct.setSHELF_LIFE_DAY_2 (cursor.getInt(cursor.getColumnIndex(SHELF_LIFE_DAY_2)));
+                aProduct.setSHELF_LIFE_DAY_3 (cursor.getInt(cursor.getColumnIndex(SHELF_LIFE_DAY_3)));
+                aProduct.setSHELF_LIFE_DAY_4 (cursor.getInt(cursor.getColumnIndex(SHELF_LIFE_DAY_4)));
+                aProduct.setSHELF_LIFE_DAY_5 (cursor.getInt(cursor.getColumnIndex(SHELF_LIFE_DAY_5)));
+                aProduct.setSHELF_LIFE_DAY_6 (cursor.getInt(cursor.getColumnIndex(SHELF_LIFE_DAY_6)));
+                aProduct.setSHELF_LIFE_DAY_7 (cursor.getInt(cursor.getColumnIndex(SHELF_LIFE_DAY_7)));
+                aProduct.setFORECAST_TYPE (cursor.getString(cursor.getColumnIndex(FORECAST_TYPE)));
+                aProduct.setRETURNS_ALLOWED_IND (cursor.getString(cursor.getColumnIndex(RETURNS_ALLOWED_IND )));
+                aProduct.setSPREAD_GROUP (cursor.getString(cursor.getColumnIndex(SPREAD_GROUP)));
+                aProduct.setSALES_ALLOWED_IND (cursor.getString(cursor.getColumnIndex(SALES_ALLOWED_IND )));
+                aProduct.setFRESH_RETURNS_ALLOWED_IND (cursor.getString(cursor.getColumnIndex(FRESH_RETURNS_ALLOWED_IND)));
+                aProduct.setDEX_COUNTRY_CODE (cursor.getString(cursor.getColumnIndex(DEX_COUNTRY_CODE)));
+                aProduct.setDEX_PRODUCT_TYPE (cursor.getString(cursor.getColumnIndex(DEX_PRODUCT_TYPE)));
+                aProduct.setPACK_SIZE_QTY (cursor.getString(cursor.getColumnIndex(PACK_SIZE_QTY)));
+                aProduct.setNO_DNL_DATE (cursor.getString(cursor.getColumnIndex(NO_DNL_DATE)));
+
+                someProducts.add(aProduct);
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        return someProducts;
+    }
 }

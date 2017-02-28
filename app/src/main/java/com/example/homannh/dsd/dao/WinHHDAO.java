@@ -9,10 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class WinHHDAO extends SQLiteOpenHelper {
 
-
-    public WinHHDAO(Context context) {
-        super(context, "winhh.db", null, 6);
-    }
     //HOH
 
     //Arlo table
@@ -153,6 +149,7 @@ public class WinHHDAO extends SQLiteOpenHelper {
     public static final String PACK_SIZE_QTY = "PACK_SIZE_QTY";
     public static final String NO_DNL_DATE = "NO_DNL_DATE";
 
+    //BASEPRICE
     public static final String BASEPRICE_TABLE = "BASEPRICE";
     public static final String _ID_BASEPRICE = "_ID_BASEPRICE";
     public static final String EFFECTIVE_DATE = "EFFECTIVE_DATE";
@@ -162,12 +159,34 @@ public class WinHHDAO extends SQLiteOpenHelper {
     public static final String DISTRIBUTOR_SPREAD_PER = "DISTRIBUTOR_SPREAD_PER";
     public static final String DISTRIBUTOR_PROMO_PART_IND = "DISTRIBUTOR_PROMO_PART_IND";
 
+    //INVENADJ
+    public static final String INVENADJ_TABLE = "INVENADJ";
+    public static final String _ID_INVENADJ = "_ID_INVENADJ";
+    public static final String INVENADJ_ID = "INVENADJ_ID";
+    public static final String RECORD_TYPE = "RECORD_TYPE";
+    public static final String STORE_DELIVERY_DATE = "STORE_DELIVERY_DATE";
+    public static final String TRANSACTION_DATE = "TRANSACTION_DATE";
+    public static final String TRANSACTION_HOUR = "TRANSACTION_HOUR";
+    public static final String TRANSACTION_MINUTE = "TRANSACTION_MINUTE";
+    public static final String DOCUMENT_NUMBER = "DOCUMENT_NUMBER";
+    public static final String ADJUST_INVENTORY = "ADJUST_INVENTORY";
+    public static final String ADJUST_TYPE = "ADJUST_TYPE";
+    public static final String THRIFT_STORE = "THRIFT_STORE";
+    public static final String ADJUST_QTY = "ADJUST_QTY";
+    public static final String ROUTE_PRICE = "ROUTE_PRICE";
+    public static final String UPLOAD_IND = "UPLOAD_IND";
+
+
+    public WinHHDAO(Context context) {
+        super(context, "winhh.db", null, 6);
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) { //This one from implements IArloDAO
 
         //Create ARLO Table
-        String sql = "CREATE TABLE " + ARLO_TABLE + " (" +
+        String sql = "CREATE TABLE "
+                + ARLO_TABLE + " (" +
                 _ID_ARLO + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GUID_CUSTOMER + " INTEGER, " + CUSTOMER_ID + " TEXT,"  +
                 ARLO_NO + " TEXT," + STORE_NO + " TEXT," + STOP_NO + " INTEGER," + ACCOUNT_NO + " TEXT," +
                 START_DATE + " TEXT," + END_DATE + " TEXT," + TICKET_TYPE + " TEXT," + TICKET_TYPE_SEQ + " TEXT," +
@@ -192,12 +211,14 @@ public class WinHHDAO extends SQLiteOpenHelper {
         db.execSQL(sql);
 
         //Create Market Table
-        sql = "CREATE TABLE " + MARKET_TABLE + " ( " + _ID_MARKET + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MARKET_ID + " TEXT, " + MARKET_DESCRIPTION
+        sql = "CREATE TABLE "
+                + MARKET_TABLE + " ( " + _ID_MARKET + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MARKET_ID + " TEXT, " + MARKET_DESCRIPTION
                 + " TEXT " + ");";
         db.execSQL(sql);
 
         //Create Route Table
-        sql = "CREATE TABLE " + ROUTE_TABLE + "(" + _ID_ROUTE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MARKET_ID + " TEXT, " + ROUTE_ID + " TEXT, " + ROUTE_NAME + " TEXT, " + ROUTE_TYPE + " TEXT, "
+        sql = "CREATE TABLE "
+                + ROUTE_TABLE + "(" + _ID_ROUTE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MARKET_ID + " TEXT, " + ROUTE_ID + " TEXT, " + ROUTE_NAME + " TEXT, " + ROUTE_TYPE + " TEXT, "
                 + DISPLAY_PRICE_IND + " TEXT, " + DEX_SIGNATURE_CODE + " TEXT, " + LOAD_SECURITY_CODE + " TEXT, " + RETURN_SECURITY_CODE + " TEXT, " + COMMUNICATION_SECURITY_CODE + " TEXT, "
                 + DNL_DATE + " TEXT, " + INVOICE_MARKET_ID + " TEXT, " + SLF_PLUS_IND + " TEXT, " + STD_ORD_CONTROL_CODE + " TEXT, " + OVERSELL_LOAD_IND + " TEXT, "
                 + DEPOT_NAME + " TEXT, " + UNLOCK_STOPS_IND + " TEXT, " + PRESET_ORDER_IND + " TEXT, " + ORDER_CHANGE_CODE + " TEXT, " + ROUTE_LEVEL_ORDER_IND + " TEXT, "
@@ -209,7 +230,8 @@ public class WinHHDAO extends SQLiteOpenHelper {
 
         //Create Product Table
 
-        sql = "CREATE TABLE " + PRODUCT_TABLE + "(" + _ID_PRODUCT + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_ID + " TEXT, " + ITEM_NO + " TEXT, " + COMPANY_CODE + " TEXT, " + UPC_CODE + " TEXT, "
+        sql = "CREATE TABLE "
+                + PRODUCT_TABLE + "(" + _ID_PRODUCT + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_ID + " TEXT, " + ITEM_NO + " TEXT, " + COMPANY_CODE + " TEXT, " + UPC_CODE + " TEXT, "
                 + SUB_UPC_CODE + " TEXT, " + PRODUCT_GROUP_CODE + " TEXT, " + PRODUCT_CAT_CODE + " TEXT, " + FINANCIAL_CAT_CODE + " TEXT, " + PRODUCT_DESC + " TEXT, "
                 + SHELF_LIFE_DAY_1 + " INTEGER, " + SHELF_LIFE_DAY_2 + " INTEGER, " + SHELF_LIFE_DAY_3 + " INTEGER, " + SHELF_LIFE_DAY_4 + " INTEGER, " + SHELF_LIFE_DAY_5 + " INTEGER, "
                 + SHELF_LIFE_DAY_6 + " INTEGER, " + SHELF_LIFE_DAY_7 + " INTEGER, "
@@ -221,14 +243,24 @@ public class WinHHDAO extends SQLiteOpenHelper {
 
         //Create Baseprice Table
 
-        sql = "CREATE TABLE " + BASEPRICE_TABLE + "(" + _ID_BASEPRICE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EFFECTIVE_DATE + " TEXT, " + PRODUCT_ID + " TEXT, " + ITEM_NO + " TEXT, "
+        sql = "CREATE TABLE "
+                + BASEPRICE_TABLE + "(" + _ID_BASEPRICE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EFFECTIVE_DATE + " TEXT, " + PRODUCT_ID + " TEXT, " + ITEM_NO + " TEXT, "
                 + WHOLESALE_PRICE + " DOUBLE, "  + RETAIL_PRICE + " DOUBLE, "  + DISTRIBUTOR_PRICE + " DOUBLE, "
                 + DISTRIBUTOR_SPREAD_PER + " DOUBLE, " + DISTRIBUTOR_PROMO_PART_IND + " TEXT "
                 + ");";
 
         db.execSQL(sql);
 
+        //Create Invenadj Table
 
+        sql = "CREATE TABLE "
+                + INVENADJ_TABLE + "(" + _ID_INVENADJ + " INTEGER PRIMARY KEY AUTOINCREMENT, " + INVENADJ_ID + " long, " + RECORD_TYPE + " TEXT, " + ITEM_NO + " TEXT, "
+                + STORE_DELIVERY_DATE + " TEXT, "  + TRANSACTION_DATE + " TEXT, "  + TRANSACTION_HOUR + " TEXT, " + TRANSACTION_MINUTE + " TEXT, "
+                + DOCUMENT_NUMBER + " TEXT, "  + ADJUST_INVENTORY + " TEXT, "  + ADJUST_TYPE + " TEXT, " + THRIFT_STORE + " TEXT, "
+                + ADJUST_QTY + " INTEGER, " + ROUTE_PRICE + " DOUBLE, " + UPLOAD_IND + " TEXT, " + PRODUCT_ID + " TEXT "
+                + ");";
+
+        db.execSQL(sql);
     }
 
     @Override
@@ -238,7 +270,111 @@ public class WinHHDAO extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + ROUTE_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + PRODUCT_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + BASEPRICE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + INVENADJ_TABLE);
         onCreate(db);
 
     }
+
+    public void reCreateArloTable(SQLiteDatabase db){
+        String sql = "DROP TABLE IF EXISTS ";
+            db.execSQL(sql + ARLO_TABLE);
+
+            sql = "CREATE TABLE "
+                + ARLO_TABLE + " (" +
+                _ID_ARLO + " INTEGER PRIMARY KEY AUTOINCREMENT, " + GUID_CUSTOMER + " INTEGER, " + CUSTOMER_ID + " TEXT,"  +
+                ARLO_NO + " TEXT," + STORE_NO + " TEXT," + STOP_NO + " INTEGER," + ACCOUNT_NO + " TEXT," +
+                START_DATE + " TEXT," + END_DATE + " TEXT," + TICKET_TYPE + " TEXT," + TICKET_TYPE_SEQ + " TEXT," +
+                TICKET_COPIES_QTY + " INTEGER," + CR_TERMS_CODE + " INTEGER," + CR_STATUS_CODE + " TEXT," + PRODUCT_TYPE + " TEXT," +
+                CUST_VENDOR + " TEXT," + LOCKBOX_ID + " TEXT," + DEPT_CONTACT + " TEXT," + DEPT_CODE + " TEXT," +
+                PRICE_OV_IND + " TEXT," + TICKET_DISCOUNT_PER + " TEXT," + PROMO_IND + " INTEGER," + AGE_DATED_RET_IND + " TEXT," +
+                PROMPT_FROM_LOAD_IND + " TEXT," + FORECAST_IND + " TEXT," + DSD_REQ_IND + " TEXT," + SIGNATURE_REQUIRED_IND + " TEXT," +
+                PRINT_DISCOUNT_IND + " TEXT," + PRINT_RETAIL_PRICE_IND + " TEXT," + STORE_STAMP_REQ_TICKET + " TEXT," + TICKET_FORMAT + " TEXT," +
+                AUTH_LIST_ID + " TEXT," + LOCK_IND + " TEXT," + ROUTE_STORE_IND + " TEXT," + STD_ORDER_ALLOW_IND + " TEXT," +
+                INVOICE_SORT_CODE + " TEXT," + CARRY_OVER_DAY + " TEXT," + AMDUTCH_IND + " TEXT," + ORDERS_ONLY_IND + " TEXT," +
+                SUPPLIER_COMM_ID + " TEXT," + SUPPLIER_DUNS_NO + " TEXT," + SUPPLIER_LOCATION_NO + " TEXT," + RECEIVER_COMM_ID + " TEXT," +
+                RECEIVER_DUNS_NO + " TEXT," + RECEIVER_LOCATION_NO + " TEXT," + DEX_VERSION + " TEXT," + GENERATE_G72_IND + " TEXT," +
+                STORE_NAME + " TEXT," + STORE_ADDRESS_1 + " TEXT," + STORE_ADDRESS_2 + " TEXT," + STORE_ADDRESS_3 + " TEXT," +
+                STORE_CITY_NAME + " TEXT," + STORE_STATE_CODE + " TEXT," + STORE_ZIP_CODE + " TEXT," + STORE_PHONE_NO + " TEXT," +
+                STORE_CONTACT + " TEXT," + STORE_REF_NO + " TEXT," + MAXIMUM_DUE_BILL + " TEXT," + STORE_CHANGE_IND + " TEXT," +
+                ACCOUNT_TYPE + " TEXT," + DEPT_NAME + " TEXT," + SERVICED + " INTEGER," +
+                NAME_MODIFIED_IND + " TEXT," + BALANCE_AMT + " TEXT," + SELECTED_STOP + " TEXT," + TICKET_SURCHARGE_AMT + " TEXT," +
+                DELIVERY_MESSAGE + " TEXT," + CALLBACK_PROMPT_IND + " TEXT," + CALLBACK_TODAY_CODE + " TEXT," + WEB_ORDER_IND + " TEXT," +
+                SALES_TAX_RATE + " TEXT"
+                + " );";
+
+            db.execSQL(sql);
+    }
+
+    public void reCreateMarketTable(SQLiteDatabase db){
+        String sql = "DROP TABLE IF EXISTS ";
+        db.execSQL(sql + MARKET_TABLE);
+
+        sql = "CREATE TABLE "
+                + MARKET_TABLE + " ( " + _ID_MARKET + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MARKET_ID + " TEXT, " + MARKET_DESCRIPTION
+                + " TEXT " + ");";
+        db.execSQL(sql);
+
+    }
+
+    public void reCreateRouteTable(SQLiteDatabase db) {
+        String sql = "DROP TABLE IF EXISTS ";
+        db.execSQL(sql + ROUTE_TABLE);
+
+        sql = "CREATE TABLE "
+                + ROUTE_TABLE + "(" + _ID_ROUTE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MARKET_ID + " TEXT, " + ROUTE_ID + " TEXT, " + ROUTE_NAME + " TEXT, " + ROUTE_TYPE + " TEXT, "
+                + DISPLAY_PRICE_IND + " TEXT, " + DEX_SIGNATURE_CODE + " TEXT, " + LOAD_SECURITY_CODE + " TEXT, " + RETURN_SECURITY_CODE + " TEXT, " + COMMUNICATION_SECURITY_CODE + " TEXT, "
+                + DNL_DATE + " TEXT, " + INVOICE_MARKET_ID + " TEXT, " + SLF_PLUS_IND + " TEXT, " + STD_ORD_CONTROL_CODE + " TEXT, " + OVERSELL_LOAD_IND + " TEXT, "
+                + DEPOT_NAME + " TEXT, " + UNLOCK_STOPS_IND + " TEXT, " + PRESET_ORDER_IND + " TEXT, " + ORDER_CHANGE_CODE + " TEXT, " + ROUTE_LEVEL_ORDER_IND + " TEXT, "
+                + SCREEN_SECURITY_CODE + " TEXT, " + COMM_TIME + " TEXT, " + DISABLE_ADD_CO_IND + " TEXT, " + ADDITIONAL_CONTROLS_IND + " TEXT, " + ZERO_DISTRIBUTION_IND + " TEXT, "
+                + DELAYED_CASH_IND + " TEXT, "+ DEF_RET_LOCATION + " TEXT"
+                + ");";
+
+        db.execSQL(sql);
+
+    }
+
+    public void reCreateProductTable(SQLiteDatabase db) {
+        String sql = "DROP TABLE IF EXISTS ";
+        db.execSQL(sql + PRODUCT_TABLE);
+
+        sql = "CREATE TABLE "
+                + PRODUCT_TABLE + "(" + _ID_PRODUCT + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_ID + " TEXT, " + ITEM_NO + " TEXT, " + COMPANY_CODE + " TEXT, " + UPC_CODE + " TEXT, "
+                + SUB_UPC_CODE + " TEXT, " + PRODUCT_GROUP_CODE + " TEXT, " + PRODUCT_CAT_CODE + " TEXT, " + FINANCIAL_CAT_CODE + " TEXT, " + PRODUCT_DESC + " TEXT, "
+                + SHELF_LIFE_DAY_1 + " INTEGER, " + SHELF_LIFE_DAY_2 + " INTEGER, " + SHELF_LIFE_DAY_3 + " INTEGER, " + SHELF_LIFE_DAY_4 + " INTEGER, " + SHELF_LIFE_DAY_5 + " INTEGER, "
+                + SHELF_LIFE_DAY_6 + " INTEGER, " + SHELF_LIFE_DAY_7 + " INTEGER, "
+                + FORECAST_TYPE + " TEXT, " + RETURNS_ALLOWED_IND + " TEXT, " + SPREAD_GROUP + " TEXT, " + SALES_ALLOWED_IND + " TEXT, " + FRESH_RETURNS_ALLOWED_IND + " TEXT, "
+                + DEX_COUNTRY_CODE + " TEXT, " + DEX_PRODUCT_TYPE + " TEXT, " + PACK_SIZE_QTY + " TEXT, " + NO_DNL_DATE + " TEXT"
+                + ");";
+
+        db.execSQL(sql);
+    }
+
+    public void reCreateBasepriceTable(SQLiteDatabase db) {
+        String sql = "DROP TABLE IF EXISTS ";
+        db.execSQL(sql + BASEPRICE_TABLE);
+
+        sql = "CREATE TABLE "
+                + BASEPRICE_TABLE + "(" + _ID_BASEPRICE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EFFECTIVE_DATE + " TEXT, " + PRODUCT_ID + " TEXT, " + ITEM_NO + " TEXT, "
+                + WHOLESALE_PRICE + " DOUBLE, "  + RETAIL_PRICE + " DOUBLE, "  + DISTRIBUTOR_PRICE + " DOUBLE, "
+                + DISTRIBUTOR_SPREAD_PER + " DOUBLE, " + DISTRIBUTOR_PROMO_PART_IND + " TEXT "
+                + ");";
+
+        db.execSQL(sql);
+    }
+
+    public void reCreateInvenadjTable(SQLiteDatabase db) {
+        String sql = "DROP TABLE IF EXISTS ";
+        db.execSQL(sql + INVENADJ_TABLE);
+
+        sql = "CREATE TABLE "
+                + INVENADJ_TABLE + "(" + _ID_INVENADJ + " INTEGER PRIMARY KEY AUTOINCREMENT, " + INVENADJ_ID + " long, " + RECORD_TYPE + " TEXT, " + ITEM_NO + " TEXT, "
+                + STORE_DELIVERY_DATE + " TEXT, "  + TRANSACTION_DATE + " TEXT, "  + TRANSACTION_HOUR + " TEXT, " + TRANSACTION_MINUTE + " TEXT, "
+                + DOCUMENT_NUMBER + " TEXT, "  + ADJUST_INVENTORY + " TEXT, "  + ADJUST_TYPE + " TEXT, " + THRIFT_STORE + " TEXT, "
+                + ADJUST_QTY + " INTEGER, " + ROUTE_PRICE + " DOUBLE, " + UPLOAD_IND + " TEXT, " + PRODUCT_ID + " TEXT "
+                + ");";
+
+        db.execSQL(sql);
+    }
+
+
 }

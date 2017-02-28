@@ -24,7 +24,7 @@ public class InvenadjDTO {
     String PRODUCT_ID;
 
     public  String toString(){
-        return INVENADJ_ID + " " + RECORD_TYPE + " " + PRODUCT_ID + " " + ITEM_NO + " " + ADJUST_QTY;
+        return INVENADJ_ID + " " + RECORD_TYPE + " " + PRODUCT_ID + " " + ITEM_NO + " " + ADJUST_QTY + " " + ADJUST_TYPE;
     }
 
 

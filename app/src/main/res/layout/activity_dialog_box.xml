@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_dialog_box"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    tools:context="com.example.homannh.dsd.activity.DialogBoxActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c1c1c1"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/toolbarLogIn" />
+
+    <TextView
+        android:text="@string/lblBlank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarLogIn"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="31dp"
+        android:id="@+id/lblDescription1"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="@string/lblScannedUPC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/lblScannedUPC"
+        android:textSize="24sp"
+        android:layout_below="@+id/lblDescription1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp" />
+
+    <TextView
+        android:text="@string/lblBlank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblScannedUPC"
+        android:layout_toRightOf="@+id/lblScannedUPC"
+        android:layout_toEndOf="@+id/lblScannedUPC"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:id="@+id/lblScannedUPCValue"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="Item No:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/lblItemNo"
+        android:textSize="24sp"
+        android:layout_below="@+id/lblScannedUPC"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp" />
+
+    <TextView
+        android:text="@string/lblBlank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblItemNo"
+        android:layout_toRightOf="@+id/lblItemNo"
+        android:layout_toEndOf="@+id/lblItemNo"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:id="@+id/lblItemNoValue"
+        android:textSize="24sp" />
+
+
+    <TextView
+        android:text="@string/lblBlank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblItemNoValue"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="31dp"
+        android:id="@+id/lblDescription2"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="@string/lblBlank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblDescription2"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="31dp"
+        android:id="@+id/lblDescription3"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="@string/lblBlank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblDescription3"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="31dp"
+        android:id="@+id/lblDescription4"
+        android:textSize="24sp" />
+
+    <Button
+        android:text="@string/lblOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblDescription4"
+        android:layout_marginTop="100dp"
+        android:id="@+id/btnOk"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginRight="120dp"
+        android:onClick="btnOkClicked"
+        android:background="@drawable/new3dlongdefault" />
+
+</RelativeLayout>

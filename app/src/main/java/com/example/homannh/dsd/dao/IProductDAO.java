@@ -19,4 +19,6 @@ public interface IProductDAO {
     List<ProductDTO> getProductsByYourSQL(String yourSQL);
 
     List<ProductDTO> getProductsByUPC(String companyCode, String upcCode);
+
+    List<ProductDTO> getProductsByItemNo(String itemNo);
 }

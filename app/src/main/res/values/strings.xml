@@ -31,6 +31,7 @@
     <string name="lblScanner">Scanner</string>
     <string name="lblScan">Scan</string>
     <string name="lblScannedUPC">UPC:</string>
+    <string name="lblOk" >OK</string>
     <string-array name="arlos">
         <item>Stop and Shops 1</item>
         <item>Stop and Shops 2</item>

@@ -44,10 +44,11 @@
         <activity android:name="com.example.homannh.dsd.activity.ArloListViewActivity" />
         <activity android:name="com.example.homannh.dsd.activity.ListViewClickedActivity" />
         <activity android:name="com.example.homannh.dsd.activity.MarketListViewActivity" />
-        <activity android:name="com.example.homannh.dsd.activity.ScannerActivity"
+        <activity
+            android:name="com.example.homannh.dsd.activity.ScannerActivity"
             android:screenOrientation="portrait" />
+        <activity android:name="com.example.homannh.dsd.activity.DialogBoxActivity"/>
         <activity android:name="com.example.homannh.dsd.activity.ProductListViewActivity"></activity>
-
     </application>
 
 </manifest>
