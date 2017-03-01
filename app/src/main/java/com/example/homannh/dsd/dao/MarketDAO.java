@@ -24,6 +24,11 @@ public class MarketDAO extends WinHHDAO implements IMarketDAO{
     }
 
     @Override
+    public void initMarket(Context context) {
+        super.reCreateMarketTable();
+    }
+
+    @Override
     public void insert(MarketDTO marketDTO) throws Exception {
         ContentValues contentValues = new ContentValues();
 
@@ -33,7 +38,7 @@ public class MarketDAO extends WinHHDAO implements IMarketDAO{
     }
 
     @Override
-    public void IsMarketExist() {
+    public void isMarketTable() {
 
         //SELECT name FROM sqlite_master WHERE type='table' AND name='table_name';
         String sqlStmt = "CREATE TABLE IF NOT EXISTS " + MARKET_TABLE + " ( " + _ID_MARKET + " INTEGER PRIMARY KEY AUTOINCREMENT, " +

@@ -1,5 +1,7 @@
 package com.example.homannh.dsd.dao;
 
+import android.content.Context;
+
 import com.example.homannh.dsd.dto.MarketDTO;
 
 import java.util.List;
@@ -9,10 +11,14 @@ import java.util.List;
  */
 
 public interface IMarketDAO {
+    void initMarket(Context context);
 
-    public void insert(MarketDTO marketDTO) throws Exception;
-    public void IsMarketExist();
-    public int countsMarkets();
-    public List<MarketDTO> fetchMarkets(String searchTerm);
+    void insert(MarketDTO marketDTO) throws Exception;
+
+    void isMarketTable();
+
+    int countsMarkets();
+
+    List<MarketDTO> fetchMarkets(String searchTerm);
 
 }

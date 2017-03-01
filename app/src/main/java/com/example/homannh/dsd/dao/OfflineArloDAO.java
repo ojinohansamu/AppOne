@@ -35,6 +35,11 @@ public class OfflineArloDAO extends WinHHDAO implements IOfflineArloDAO {
 
 
     @Override
+    public void initArlo(Context context) {
+
+    }
+
+    @Override
     public List<ArloDTO> fetchArlos(String searchTerm) {
         return null;
     }
@@ -126,7 +131,7 @@ public class OfflineArloDAO extends WinHHDAO implements IOfflineArloDAO {
     }
 
     @Override
-    public void IsArloExist() {
+    public void isArloTable() {
 
     }
 

@@ -58,6 +58,10 @@ public class DSDMiscMenuActivity extends AppCompatActivity {
         startActivity(scannerActivity);
     }
 
+    public void btnReloadDBClicked(View view){
+        Intent  hhActivity = new Intent(this, HHActivity.class);
+        startActivity(hhActivity);
+    }
 
     public void DisplayMessages(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();

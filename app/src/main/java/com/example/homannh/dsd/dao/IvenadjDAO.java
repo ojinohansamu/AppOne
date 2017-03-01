@@ -20,6 +20,11 @@ public class IvenadjDAO extends WinHHDAO implements IIvenadjDAO {
     }
 
     @Override
+    public void initInvenadj(Context context) {
+        super.reCreateInvenadjTable();
+    }
+
+    @Override
     public void insert(InvenadjDTO invenadjDTO) throws  Exception{
         ContentValues cv = new ContentValues();
         cv.put(INVENADJ_ID, invenadjDTO.getINVENADJ_ID());
@@ -40,7 +45,7 @@ public class IvenadjDAO extends WinHHDAO implements IIvenadjDAO {
     }
 
     @Override
-    public void IsInvenadjExist(){
+    public void isInvenadjTable(){
 
         String sql = "CREATE TABLE IF NOT EXISTS "
                 + INVENADJ_TABLE + "(" + _ID_INVENADJ + " INTEGER PRIMARY KEY AUTOINCREMENT, " + INVENADJ_ID + " TEXT, " + RECORD_TYPE + " TEXT, " + ITEM_NO + " TEXT, "

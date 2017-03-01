@@ -92,11 +92,26 @@
         android:onClick="btnScannerTestClicked" />
 
     <Button
+        android:text="@string/lblReloadDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReloadDB"
+        android:layout_below="@+id/btnScannerTest"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:background="@drawable/button_long"
+        android:onClick="btnReloadDBClicked" />
+
+    <Button
         android:text="@string/lblExit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnExit"
-        android:layout_below="@+id/btnScannerTest"
+        android:layout_below="@+id/btnReloadDB"
         android:layout_marginLeft="20dp"
         android:layout_alignParentRight="false"
         android:layout_alignParentEnd="false"

@@ -24,6 +24,11 @@ import java.util.Set;
 public class ArloDAOStub implements IArloDAO {
 
     @Override
+    public void initArlo(Context context) {
+
+    }
+
+    @Override
     public List<ArloDTO> fetchArlos(String searchTerm)
     {
         List<ArloDTO> allArlos = new ArrayList<ArloDTO>();
@@ -75,7 +80,7 @@ public class ArloDAOStub implements IArloDAO {
     }
 
     @Override
-    public void IsArloExist() {
+    public void isArloTable() {
 
     }
 

@@ -25,6 +25,7 @@ public class ProductListViewActivity extends AppCompatActivity implements Adapte
 
     private ListView listViewProducts;
     private Toolbar tooBar;
+    private int productsCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +33,11 @@ public class ProductListViewActivity extends AppCompatActivity implements Adapte
         setContentView(R.layout.activity_product_list_view);
 
         listViewProducts = (ListView) findViewById(R.id.listViewProducts);
-        tooBar = (Toolbar) findViewById(R.id.toolbarLogIn);
-        tooBar.setTitle("Products");
 
         listViewProducts.setAdapter(new MyCustomAdapter(this));
         listViewProducts.setOnItemClickListener(this);
+        tooBar = (Toolbar) findViewById(R.id.toolbarLogIn);
+        tooBar.setTitle("Products " + productsCount);
     }
 
     @Override
@@ -93,6 +94,7 @@ public class ProductListViewActivity extends AppCompatActivity implements Adapte
             IProductDAO productDAO = new ProductDAO(ctx);
             String sql = "SELECT * FROM PRODUCT ORDER BY ITEM_NO ";
             someProducts = productDAO.getProductsByYourSQL(sql);
+            productsCount = someProducts.size();
 
             for (ProductDTO aProduct : someProducts) {
                 SingleRowProduct singleRowAdapter = new SingleRowProduct(aProduct.getPRODUCT_DESC(),aProduct.getCOMPANY_CODE() + aProduct.getUPC_CODE(), aProduct.getITEM_NO());

@@ -178,7 +178,7 @@ public class WinHHDAO extends SQLiteOpenHelper {
 
 
     public WinHHDAO(Context context) {
-        super(context, "winhh.db", null, 3); //6);
+        super(context, "winhh.db", null, 7); //6 - for my Samsung, 1 - CT50);
     }
 
     @Override
@@ -275,7 +275,8 @@ public class WinHHDAO extends SQLiteOpenHelper {
 
     }
 
-    public void reCreateArloTable(SQLiteDatabase db){
+    public void reCreateArloTable(){
+        SQLiteDatabase db = this.getWritableDatabase();
         String sql = "DROP TABLE IF EXISTS ";
             db.execSQL(sql + ARLO_TABLE);
 
@@ -305,7 +306,8 @@ public class WinHHDAO extends SQLiteOpenHelper {
             db.execSQL(sql);
     }
 
-    public void reCreateMarketTable(SQLiteDatabase db){
+    public void reCreateMarketTable(){
+        SQLiteDatabase db = this.getWritableDatabase();
         String sql = "DROP TABLE IF EXISTS ";
         db.execSQL(sql + MARKET_TABLE);
 
@@ -316,7 +318,8 @@ public class WinHHDAO extends SQLiteOpenHelper {
 
     }
 
-    public void reCreateRouteTable(SQLiteDatabase db) {
+    public void reCreateRouteTable() {
+        SQLiteDatabase db = this.getWritableDatabase();
         String sql = "DROP TABLE IF EXISTS ";
         db.execSQL(sql + ROUTE_TABLE);
 
@@ -324,8 +327,8 @@ public class WinHHDAO extends SQLiteOpenHelper {
                 + ROUTE_TABLE + "(" + _ID_ROUTE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MARKET_ID + " TEXT, " + ROUTE_ID + " TEXT, " + ROUTE_NAME + " TEXT, " + ROUTE_TYPE + " TEXT, "
                 + DISPLAY_PRICE_IND + " TEXT, " + DEX_SIGNATURE_CODE + " TEXT, " + LOAD_SECURITY_CODE + " TEXT, " + RETURN_SECURITY_CODE + " TEXT, " + COMMUNICATION_SECURITY_CODE + " TEXT, "
                 + DNL_DATE + " TEXT, " + INVOICE_MARKET_ID + " TEXT, " + SLF_PLUS_IND + " TEXT, " + STD_ORD_CONTROL_CODE + " TEXT, " + OVERSELL_LOAD_IND + " TEXT, "
-                + DEPOT_NAME + " TEXT, " + UNLOCK_STOPS_IND + " TEXT, " + PRESET_ORDER_IND + " TEXT, " + ORDER_CHANGE_CODE + " TEXT, " + ROUTE_LEVEL_ORDER_IND + " TEXT, "
-                + SCREEN_SECURITY_CODE + " TEXT, " + COMM_TIME + " TEXT, " + DISABLE_ADD_CO_IND + " TEXT, " + ADDITIONAL_CONTROLS_IND + " TEXT, " + ZERO_DISTRIBUTION_IND + " TEXT, "
+                + DEPOT_NAME + " TEXT, "  + UNLOCK_STOPS_IND + " TEXT, " + PRESET_ORDER_IND + " TEXT, " + ORDER_CHANGE_CODE + " TEXT, " + ROUTE_LEVEL_ORDER_IND + " TEXT, "
+                + SCREEN_SECURITY_CODE +" TEXT, " + COMM_TIME + " TEXT, " + DISABLE_ADD_CO_IND + " TEXT, " + ADDITIONAL_CONTROLS_IND + " TEXT, " + ZERO_DISTRIBUTION_IND + " TEXT, "
                 + DELAYED_CASH_IND + " TEXT, "+ DEF_RET_LOCATION + " TEXT"
                 + ");";
 
@@ -333,7 +336,8 @@ public class WinHHDAO extends SQLiteOpenHelper {
 
     }
 
-    public void reCreateProductTable(SQLiteDatabase db) {
+    public void reCreateProductTable() {
+        SQLiteDatabase db = this.getWritableDatabase();
         String sql = "DROP TABLE IF EXISTS ";
         db.execSQL(sql + PRODUCT_TABLE);
 
@@ -349,7 +353,8 @@ public class WinHHDAO extends SQLiteOpenHelper {
         db.execSQL(sql);
     }
 
-    public void reCreateBasepriceTable(SQLiteDatabase db) {
+    public void reCreateBasepriceTable() {
+        SQLiteDatabase db = this.getWritableDatabase();
         String sql = "DROP TABLE IF EXISTS ";
         db.execSQL(sql + BASEPRICE_TABLE);
 
@@ -362,7 +367,9 @@ public class WinHHDAO extends SQLiteOpenHelper {
         db.execSQL(sql);
     }
 
-    public void reCreateInvenadjTable(SQLiteDatabase db) {
+    public void reCreateInvenadjTable() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
         String sql = "DROP TABLE IF EXISTS ";
         db.execSQL(sql + INVENADJ_TABLE);
 

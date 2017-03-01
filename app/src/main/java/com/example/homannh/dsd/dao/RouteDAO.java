@@ -20,6 +20,11 @@ public class RouteDAO extends WinHHDAO implements IRouteDAO {
     }
 
     @Override
+    public void initRoute(Context context) {
+        super.reCreateRouteTable();
+    }
+
+    @Override
     public void insert(RouteDTO routeDTO) throws Exception{
 
         ContentValues contentValues = new ContentValues();
@@ -55,7 +60,7 @@ public class RouteDAO extends WinHHDAO implements IRouteDAO {
     }
 
     @Override
-    public void IsRouteExist(){
+    public void isRouteTable(){
         String sql = "CREATE TABLE IF NOT EXISTS " + ROUTE_TABLE + "(" + _ID_ROUTE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + MARKET_ID + " TEXT, " + ROUTE_ID + " TEXT, " + ROUTE_NAME + " TEXT, " + ROUTE_TYPE + " TEXT, "
                 + DISPLAY_PRICE_IND + " TEXT, " + DEX_SIGNATURE_CODE + " TEXT, " + LOAD_SECURITY_CODE + " TEXT, " + RETURN_SECURITY_CODE + " TEXT, " + COMMUNICATION_SECURITY_CODE + " TEXT, "
                 + DNL_DATE + " TEXT, " + INVOICE_MARKET_ID + " TEXT, " + SLF_PLUS_IND + " TEXT, " + STD_ORD_CONTROL_CODE + " TEXT, " + OVERSELL_LOAD_IND + " TEXT, "

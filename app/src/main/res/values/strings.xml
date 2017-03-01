@@ -31,7 +31,8 @@
     <string name="lblScanner">Scanner</string>
     <string name="lblScan">Scan</string>
     <string name="lblScannedUPC">UPC:</string>
-    <string name="lblOk" >OK</string>
+    <string name="lblOk">OK</string>
+    <string name="lblCancel">Cancel</string>
     <string-array name="arlos">
         <item>Stop and Shops 1</item>
         <item>Stop and Shops 2</item>
@@ -64,4 +65,11 @@
         <item>Address 13</item>
         <item>Address 14</item>
     </string-array>
+    <string name="lblCheckingDB">Database Check</string>
+    <string name="lblDBInit">Preparing the Database</string>
+    <string name="lblDBRebuild">Rebuilding the Database</string>
+    <string name="lblReloadDB">Initialize DB</string>
+    <string name="lblDBInitFirstTime">for the first time</string>
+    <string name="lblContinue">Continue</string>
+    <string name="lblDBOK">Your database is ready</string>
 </resources>

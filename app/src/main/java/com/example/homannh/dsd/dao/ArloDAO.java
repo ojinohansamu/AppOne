@@ -23,6 +23,11 @@ public class ArloDAO extends WinHHDAO implements IArloDAO {
     }
 
     @Override
+    public void initArlo(Context context) {
+        super.reCreateArloTable();
+    }
+
+    @Override
     public List<ArloDTO> fetchArlos(String searchTerm) {
         List<ArloDTO> someArlos = new ArrayList<ArloDTO>();
         String sql = "SELECT * FROM " + ARLO_TABLE + " ORDER BY " + STOP_NO;
@@ -291,7 +296,7 @@ public class ArloDAO extends WinHHDAO implements IArloDAO {
         }
 
     @Override
-    public void IsArloExist() {
+    public void isArloTable() {
         //Create ARLO Table if not exist
         String sql = "CREATE TABLE IF NOT EXISTS "
                  + ARLO_TABLE + " (" +

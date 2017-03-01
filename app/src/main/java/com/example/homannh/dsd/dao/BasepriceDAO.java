@@ -20,6 +20,11 @@ public class BasepriceDAO extends WinHHDAO implements IBasepriceDAO {
     }
 
     @Override
+    public void initBaseprice(Context context) {
+        super.reCreateBasepriceTable();
+    }
+
+    @Override
     public void insert(BasepriceDTO basepriceDTO) throws Exception{
         ContentValues cv = new ContentValues();
 
@@ -36,7 +41,7 @@ public class BasepriceDAO extends WinHHDAO implements IBasepriceDAO {
     }
 
     @Override
-    public void IsBasepriceExist(){
+    public void isBasepriceTable(){
 
         String sql = "CREATE TABLE IF NOT EXISTS "
                 + BASEPRICE_TABLE + "(" + _ID_BASEPRICE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + EFFECTIVE_DATE + " TEXT, " + PRODUCT_ID + " TEXT, " + ITEM_NO + " TEXT, "

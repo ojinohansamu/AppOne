@@ -10,7 +10,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/bimbobear"
+        android:icon="@mipmap/bimbohead"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -47,7 +47,11 @@
         <activity
             android:name="com.example.homannh.dsd.activity.ScannerActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.example.homannh.dsd.activity.DialogBoxActivity"/>
+        <activity
+            android:name="com.example.homannh.dsd.activity.DialogBoxActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.example.homannh.dsd.activity.HHActivity"
+            android:screenOrientation="portrait" />
         <activity android:name="com.example.homannh.dsd.activity.ProductListViewActivity"></activity>
     </application>
 

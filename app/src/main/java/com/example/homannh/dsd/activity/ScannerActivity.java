@@ -187,9 +187,9 @@ public class ScannerActivity extends AppCompatActivity {
         }
         else
         {
-            lblScannedUPCValue.setText("Invalid product!");
+            lblScannedUPCValue.setText(companyCode + upcCode);
             lblItemNoValue.setText("Invalid product!");
-            lblDescription1.setText("Invalid product!");
+            lblDescription1.setText("Product not in the database!");
 
         }
     }

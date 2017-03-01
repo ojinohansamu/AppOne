@@ -20,6 +20,11 @@ public class ProductDAO extends WinHHDAO implements IProductDAO {
     }
 
     @Override
+    public void initProduct(Context context) {
+        super.reCreateProductTable();
+    }
+
+    @Override
     public void insert(ProductDTO productDTO) throws Exception{
         ContentValues cv = new ContentValues();
         cv.put(PRODUCT_ID, productDTO.getPRODUCT_ID());
@@ -53,7 +58,7 @@ public class ProductDAO extends WinHHDAO implements IProductDAO {
     }
 
     @Override
-    public void IsPoductExist(){
+    public void isProductTable(){
         String sql = "CREATE TABLE IF NOT EXISTS "
                 + PRODUCT_TABLE + "(" + _ID_PRODUCT + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_ID + " TEXT, " + ITEM_NO + " TEXT, " + COMPANY_CODE + " TEXT, " + UPC_CODE + " TEXT, "
                 + SUB_UPC_CODE + " TEXT, " + PRODUCT_GROUP_CODE + " TEXT, " + PRODUCT_CAT_CODE + " TEXT, " + FINANCIAL_CAT_CODE + " TEXT, " + PRODUCT_DESC + " TEXT, "
