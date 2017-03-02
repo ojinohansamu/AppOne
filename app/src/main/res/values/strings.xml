@@ -72,4 +72,6 @@
     <string name="lblDBInitFirstTime">for the first time</string>
     <string name="lblContinue">Continue</string>
     <string name="lblDBOK">Your database is ready</string>
+    <string name="lblAdjustmentTitle">Adjustments</string>
+    <string name="lblLoad">Load:</string>
 </resources>

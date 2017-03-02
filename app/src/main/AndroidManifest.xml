@@ -50,9 +50,11 @@
         <activity
             android:name="com.example.homannh.dsd.activity.DialogBoxActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.example.homannh.dsd.activity.HHActivity"
+        <activity
+            android:name="com.example.homannh.dsd.activity.HHActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.example.homannh.dsd.activity.ProductListViewActivity"></activity>
+        <activity android:name="com.example.homannh.dsd.activity.ProductListViewActivity" />
+        <activity android:name="com.example.homannh.dsd.activity.SODActivity"></activity>
     </application>
 
 </manifest>

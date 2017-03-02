@@ -43,7 +43,9 @@ public class DSDMainMenuActivity extends AppCompatActivity {
     }
 
     public void btnAdjutmentClicked(View view){
-        DisplayMessages("No Ready yet!");
+        Intent sodActivity = new Intent(this, SODActivity.class);
+        sodActivity.putExtra("VAR_Routeinfo", _Routeinfo);
+        startActivity(sodActivity);
     }
 
     public void btnSalesClicked(View view){

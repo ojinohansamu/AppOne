@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sod"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.homannh.dsd.activity.SODActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c1c1c1"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/toolbarLogIn" />
+
+    <TextView
+        android:text="@string/lblAdjustmentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/lblAdjustment"
+        android:textSize="18sp" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="@string/lblBlank"
+        android:ems="10"
+        android:id="@+id/txtUPC"
+        android:textSize="18sp"
+        android:layout_alignBottom="@+id/toolbarLogIn"
+        android:layout_toRightOf="@+id/lblAdjustment"
+        android:layout_toEndOf="@+id/lblAdjustment"
+        android:layout_marginLeft="158dp"
+        android:layout_marginStart="158dp" />
+
+    <TextView
+        android:text="@string/lblScannedUPC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblUPC"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/txtUPC"
+        android:layout_alignBottom="@+id/txtUPC"
+        android:layout_marginLeft="220dp"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarLogIn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/listviewAdjustments" />
+
+
+</RelativeLayout>
