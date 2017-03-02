@@ -1,0 +1,159 @@
+﻿MSG_ID	DESCRIPTION
+8,You will lose all current transactions.  Are you sure?
+10,Current system date (<system date>) is invalid - contact Help Desk
+69,Invalid date format
+100,Suspended Load
+101,Data will not be saved.  Are you sure?
+102,No Load has been entered
+103,Print finalized Load document?
+104,Must settle <date> before continuing
+105,Cannot open a Load document for <date> since future documents already exist
+106,No Load found.  Do you want to enter a Load manually?
+107,Final quantity cannot be less than zero
+109,Quantity cannot be zero
+110,Incorrect Security Code
+111,Cannot have both Over and Short
+112,Cannot have both In and Out
+113,Error during SearchSuspendedLoad
+114,There is a suspended load that must be finalized before another date can be selected
+202,Return Outlet not found
+203,Cannot open a Return document for <date> since future documents already exist
+204,Fresh returns not allowed for this product
+301,No activity for the selected date range
+302,UPC must be 10 digits
+303,Description cannot be blank
+304,Price cannot be blank
+401,Cannot enter sales data since the truck inventory has been finalized
+402,Cannot enter sales data since financial documents have been found for future dates
+403,RSR's cannot post date a sales ticket
+404,Cannot post date this ticket since the ticket is already suspended
+405,Cannot post date a ticket on the first day of scan-based trading
+406,Are you sure you want to post date this ticket?
+407,Cannot write a ticket for an orders-only stop
+408,Cannot write a ticket for an orders-only department
+409,Suspended delivery quantities have been adjusted due to insufficient inventory
+410,PO Number not found for this stop
+411,C/O quantities required for scan-based trading - please enter fresh quantities on the shelf
+412,All tickets for this stop will be voided.  Are you sure?
+413,Total quantities must be a multiple of the conversion factor - check your printer for details
+414,Print all tickets for this stop?
+415,Cannot print a blank ticket
+416,Buybacks are not allowed on the first day of scan-based trading
+417,DEX is not allowed at a sample stop
+418,DEX is not allowed at a scan-based trading stop
+419,This is not a DEX stop
+420,DSD Number is required for this stop
+421,This is DEX stop.  Do you want to DEX?
+422,Are you sure you want to finalize all tickets for this stop?
+423,Print carryover report?
+424,Only delivery quantites allowed in a sample stop
+425,Close suspended ticket before creating a manual ticket
+426,Can't write a Manual Ticket on the first day of scan-based trading
+427,Manual Ticket can't be Post Dated
+428,C/O quantities required today for Safe Carry-Over.  Please enter fresh qty's on the shelf (MSG 428)
+429,You have not entered all required Safe Carry-Over qtys. Are you sure you want to exit? (MSG 429)
+430,There are messages for this store. Do you want to read them?
+431,Will you service this store again today?
+432,Buyback quantity is greater than fresh quantity on the shelf
+433,Do you want to print the Fresh Load Summary?
+434,Delivery quantity is impacting suspended inventory
+435,Not all required onhands have been entered. Display list of products?
+436,Dex is not allowed in Manual Ticket function
+440,Load must be finalized before using Daily Sales
+441,This is a Return Sales customer. Do you want to continue?
+442,RSRs are not allowed to use the Manual Sales function
+443,You will lose all signatures. Are you sure?
+444,Print invoices with signatures for your records?
+445,Report for Duty must be earlier than Released from Duty
+446,Can't change both Report for Duty and Released from Duty dates
+447,This field must be greater than 99 and less than
+448,You did not enter any carryovers. Are you sure you want to exit?
+449,Was the store completely empty of all products when you arrived?
+451,You must reboot the handheld for the changes to take effect. Do you want to reboot now?
+502,Error getting Total Cash
+503,Error initializing ROA record
+601,Invalid Market ID
+602,Invalid Route ID
+603,AceRuntimePPC.dll config could not be found
+604,WinHH.config.xml could not be found
+605,Are you sure you want to exit the communication process?
+606,Suspended tickets must be finalized or voided before continuing
+607,You have suspended tickets that will not be included.  Do you still want to print the report?
+701,Truck inventory can only be adjusted in the RSR Settlement function
+702,Selected store delivery date already settled.  Print finalized EOD Inventory Summary Report?
+703,Are you sure you want to zero-out the inventory?
+801,Wholesale prices cannot be overridden for this stop
+802,There are no Arlos in the system
+803,Wholesale prices cannot be overridden for this stop
+901,There are no standing orders for this route
+1000,This is not a RSR route!
+1001,Settlement can not be entered for future date.
+1002,You must have a finalized load document to settle the day. Please finalize your load first.
+1003,You must have a finalized return document to settle the day. Please finalize your return first.
+1004,Ending odometer reading should be at least 2 more than beginning reading.
+1005,Is ROA complete?
+1006,Please complete ROA first in order to continue settlement.
+1007,Can not locate settlement report.
+1008,Can not locate promotion report.
+1009,Suspend settlement?
+1301,Product is not part of distribution.  Add product to distribution?
+1302,Distribution cannot be changed for stops already serviced
+1303,Stop is not part of distribution.  Add stop to distribution?
+1304,Lock all products for this stop?
+1305,Stop not found in distribution table
+1306,Unlock all products for this stop?
+1307,Are you sure you want to zero-out all quantities?
+1308,Total locked quantity is greater than inventory
+1309,Lock all products for all stops?
+1310,Unlock all products for all stops?
+1700,No corresponding Load Check data available
+1801,There are no orders to modify
+1802,Standing orders not allowed
+1803,Save order changes?
+1804,Route-level adjustments are not available
+1805,Invalid Stop/Arlo #
+1806,Invalid UPC or Item Number
+1807,Product can not be ordered at the route level.
+1808,All Master Order records for the date you selected are past cut-off.  Please select another date.
+1809,There are no orders to modify. Use Find/Add to populate list.
+2000,Select the modem
+2001,Select the phone number
+2002,Select the dial type
+2003,Config file does not exist
+2004,XML file does not exist
+2005,All changes will be lost.  Are you sure?
+2200,Suspended Claim
+2203,Print finalized Claim document?
+2205,Cannot open Claims document for <date> since future documents already exist
+2214,There is a suspended Claim that must be finalized before another date can be selected
+2400,There are no suspended tickets for this route
+2600,Cannot void any tickets since the truck inventory has been finalized
+2601,No tickets can be voided for the selected date
+2610,Are you sure you want to void the selected ticket?
+2700,Data Warehouse information is not available for this stop
+2701,Data Warehouse information is not available for this stop/product
+2702,Data Warehouse information is not available for this product
+3021,Lockbox ID must be 2 letters
+3022,Name cannot be blank
+3023,Address cannot be blank
+3024,City Name cannot be blank
+3025,State cannot be blank
+3026,Zip Code cannot be blank
+3310,No tickets found for the selected store delivery date
+3320,Do you want to reprint this ticket?
+3321,Selection does not appear in the list
+3800,There are no orders to print
+3900,Print order changes only?
+5303,There are no stops with products on promotion
+5304,Print Order Report?
+5401,Order adjustments are not allowed for this route
+5402,Order restrictions in place for this route - use Modify Order function to make order adjustments
+5403,This product is past cutoff and cannot be ordered today
+5404,Warning - the quantity entered is greater than 99
+5405,Change temporary order only?
+5406,Record does not exist
+5409,No store delivery date selected
+5410,Product not authorized for this stop
+5500,Are you sure you wish to reboot the Device?
+5501,No download occurred during the last communication.
+5502,If this was your normal end-of-day communication, contact the Help Desk.

@@ -85,12 +85,22 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
+    public void nextScreen(View view)
+    {
+        Intent intent = new Intent(this, DialogBoxActivity.class);
+        SODActivity.ViewHolder holder = (SODActivity.ViewHolder) view.getTag();
+        SODActivity.SingleRowProduct singleRowProduct = (SODActivity.SingleRowProduct) holder.lblItemNoValue.getTag();
+        intent.putExtra("VAR_ItemNo",singleRowProduct.productItemNo);
+        startActivity(intent);
+
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, DialogBoxActivity.class);
 
-        ProductListViewActivity.ViewHolder holder = (ProductListViewActivity.ViewHolder) view.getTag();
-        ProductListViewActivity.SingleRowProduct singleRowProduct = (ProductListViewActivity.SingleRowProduct) holder.lblItemNoValue.getTag();
+        SODActivity.ViewHolder holder = (SODActivity.ViewHolder) view.getTag();
+        SODActivity.SingleRowProduct singleRowProduct = (SODActivity.SingleRowProduct) holder.lblItemNoValue.getTag();
 
         intent.putExtra("VAR_ItemNo",singleRowProduct.productItemNo);
 

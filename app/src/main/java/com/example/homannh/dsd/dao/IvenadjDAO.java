@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import com.example.homannh.dsd.bll.AdjustmentBLL;
 import com.example.homannh.dsd.dto.InvenadjDTO;
 
 import java.util.ArrayList;
@@ -108,4 +109,41 @@ public class IvenadjDAO extends WinHHDAO implements IIvenadjDAO {
         return someInvenadj;
     }
 
+    public List<AdjustmentBLL> createInvenadjBLLByDate(String startDate) {
+
+        List<AdjustmentBLL> someAdjustmentBLL = new ArrayList<AdjustmentBLL>();
+/*
+
+ */
+        String sql = "SELECT " + " p." + COMPANY_CODE + " p." + UPC_CODE + " p." + SUB_UPC_CODE + " p." + PRODUCT_GROUP_CODE + " p." + PRODUCT_CAT_CODE
+                + " p." + FINANCIAL_CAT_CODE +  " p." + PRODUCT_DESC + " i." + INVENADJ_ID + " i." + RECORD_TYPE + " i." + PRODUCT_ID + " i." + ITEM_NO
+                + " i." + STORE_DELIVERY_DATE +  " i." + DOCUMENT_NUMBER + " i." + ADJUST_INVENTORY + " i." + ADJUST_TYPE + " i." + ADJUST_QTY
+                + " FROM " + INVENADJ_TABLE + " i, " + PRODUCT_TABLE + " p " + " WHERE " + "i." + STORE_DELIVERY_DATE + " > '" + startDate + "'"
+                + " and " + " i." + PRODUCT_ID + " = " + " p." + PRODUCT_ID;
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                AdjustmentBLL adjustmentBLL = new AdjustmentBLL();
+
+                adjustmentBLL.setCOMPANY_CODE(cursor.getString(0));
+                adjustmentBLL.setUPC_CODE(cursor.getString(1));
+                adjustmentBLL.setSUB_UPC_CODE(cursor.getString(2));
+                adjustmentBLL.setPRODUCT_GROUP_CODE(cursor.getString(3));
+                adjustmentBLL.setPRODUCT_CAT_CODE(cursor.getString(4));
+                adjustmentBLL.setFINANCIAL_CAT_CODE(cursor.getString(5));
+                adjustmentBLL.setPRODUCT_DESC(cursor.getString(6));
+                adjustmentBLL.setINVENADJ_ID(cursor.getLong(7));
+                adjustmentBLL.setRECORD_TYPE(cursor.getString(8));
+                adjustmentBLL.setPRODUCT_ID(cursor.getString(9));
+                adjustmentBLL.setITEM_NO(cursor.getString(10));
+                someAdjustmentBLL.add(adjustmentBLL);
+
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        return someAdjustmentBLL;
+    }
 }
