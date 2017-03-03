@@ -1,5 +1,6 @@
 package com.example.homannh.dsd.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,16 +13,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.homannh.appone.R;
+import com.example.homannh.dsd.bll.AdjustmentBLL;
 import com.example.homannh.dsd.dao.BasepriceDAO;
 import com.example.homannh.dsd.dao.IBasepriceDAO;
+import com.example.homannh.dsd.dao.IInvenadjDAO;
 import com.example.homannh.dsd.dao.IProductDAO;
+import com.example.homannh.dsd.dao.InvenadjDAO;
 import com.example.homannh.dsd.dao.ProductDAO;
 import com.example.homannh.dsd.dto.BasepriceDTO;
+import com.example.homannh.dsd.dto.InvenadjDTO;
 import com.example.homannh.dsd.dto.ProductDTO;
 
 import java.util.ArrayList;
@@ -36,6 +42,9 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
     private  int productsCount;
     private TextView lblAdjustmentTitle;
     private String _Routeinfo;
+
+    private List<AdjustmentBLL> someAdjustments = new ArrayList<AdjustmentBLL>();
+    AdjustmentBLL adjustmentBLLSelected = new AdjustmentBLL();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,33 +85,51 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
                     String myUPC = txtUPC.getText().toString();
                     String companyCode = myUPC.substring(1 - i, 6 - i);
                     String upcCode = myUPC.substring(6 - i, 11-i);
-                    GetProduct(companyCode, upcCode);
+
                     startx = 0;
                     txtUPC.setText("");
+                    if(GetProduct(companyCode, upcCode))
+                        nextScreen(SODActivity.this);
+
                 }
             }
         });
 
     }
 
-    public void nextScreen(View view)
+    public void nextScreen(Context ctx)
     {
-        Intent intent = new Intent(this, DialogBoxActivity.class);
-        SODActivity.ViewHolder holder = (SODActivity.ViewHolder) view.getTag();
-        SODActivity.SingleRowProduct singleRowProduct = (SODActivity.SingleRowProduct) holder.lblItemNoValue.getTag();
-        intent.putExtra("VAR_ItemNo",singleRowProduct.productItemNo);
-        startActivity(intent);
+        Intent adjustmentActivity = new Intent(this, AdjustmentActivity.class);
+
+        AdjItem adjustmentBLL = new AdjItem();
+
+        adjustmentBLL.setCOMPANY_CODE(adjustmentBLLSelected.getCOMPANY_CODE());
+        adjustmentBLL.setUPC_CODE(adjustmentBLLSelected.getUPC_CODE());
+        adjustmentBLL.setSUB_UPC_CODE(adjustmentBLLSelected.getSUB_UPC_CODE());
+        adjustmentBLL.setITEM_NO(adjustmentBLLSelected.getITEM_NO());
+        adjustmentBLL.setPRODUCT_DESC(adjustmentBLLSelected.getPRODUCT_DESC());
+        adjustmentBLL.setADJUST_QTY(adjustmentBLLSelected.getADJUST_QTY());
+        adjustmentActivity.putExtra("VAR_Adjustment",adjustmentBLL);
+
+        startActivity(adjustmentActivity);
 
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, DialogBoxActivity.class);
+        Intent intent = new Intent(this, AdjustmentActivity.class);
 
         SODActivity.ViewHolder holder = (SODActivity.ViewHolder) view.getTag();
         SODActivity.SingleRowProduct singleRowProduct = (SODActivity.SingleRowProduct) holder.lblItemNoValue.getTag();
 
-        intent.putExtra("VAR_ItemNo",singleRowProduct.productItemNo);
+        AdjItem adjustmentBLL = new AdjItem();
+        adjustmentBLL.setCOMPANY_CODE(singleRowProduct.productUPC.substring(0,5));
+        adjustmentBLL.setUPC_CODE(singleRowProduct.productUPC.substring(5,10));
+        adjustmentBLL.setSUB_UPC_CODE(singleRowProduct.productUPC.substring(10));
+        adjustmentBLL.setITEM_NO(singleRowProduct.productItemNo);
+        adjustmentBLL.setPRODUCT_DESC(singleRowProduct.productDescription);
+        adjustmentBLL.setADJUST_QTY(singleRowProduct.productQty);
+        intent.putExtra("VAR_Adjustment",adjustmentBLL);
 
         startActivity(intent);
         //Toast.makeText(this, "Pos = " + position, Toast.LENGTH_LONG).show();
@@ -110,45 +137,24 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
     }
 
 
-    private void GetProduct(String companyCode, String upcCode) {
+    private boolean GetProduct(String companyCode, String upcCode) {
         boolean productFound = false;
-        boolean priceFound = false;
-        List<ProductDTO> anyProducts = new ArrayList<ProductDTO>();
-        IProductDAO productDAO = new ProductDAO(SODActivity.this);
-        ProductDTO scannedProduct = new ProductDTO();
-        BasepriceDTO productBaseprice = new BasepriceDTO();
-        anyProducts=productDAO.getProductsByUPC(companyCode,upcCode);
-        if(anyProducts.isEmpty())
-            Toast.makeText(this, companyCode + upcCode + " not found!", Toast.LENGTH_SHORT).show();
-        else
-        {
-            for (ProductDTO product : anyProducts) {
-                scannedProduct = product;
-                productFound = true;
-                break;
-            }
-        }
-        if(productFound)
-        {
-            //now get the baseprice from the baseprice table using itemno
-            List<BasepriceDTO> someprices = new ArrayList<BasepriceDTO>();
-            IBasepriceDAO basepriceDAO = new BasepriceDAO(SODActivity.this);
-            someprices = basepriceDAO.getBasepricesByItemNo(scannedProduct.getITEM_NO());
-            if(!someprices.isEmpty())
+        adjustmentBLLSelected = null;
+
+        for (AdjustmentBLL oneAdjustment : someAdjustments) {
+            if(oneAdjustment.getCOMPANY_CODE().equals(companyCode) && oneAdjustment.getUPC_CODE().equals(upcCode))
             {
-                for (BasepriceDTO aBaseprice : someprices) {
-                    productBaseprice = aBaseprice;
-                    priceFound = true;
-                    break;
-                }
+                productFound = true;
+                adjustmentBLLSelected = oneAdjustment;
+                break;
+
             }
         }
-        if(productFound)
-        {
-        }
-        else
-        {
-        }
+
+        if(!productFound)
+            Toast.makeText(this, companyCode + upcCode +  " not found!", Toast.LENGTH_SHORT).show();
+
+        return productFound;
     }
 
 
@@ -157,11 +163,13 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
         String productDescription;
         String productUPC;
         String productItemNo;
-        SingleRowProduct(String productDescription, String productUPC, String productItemNo)
+        int productQty;
+        SingleRowProduct(String productDescription, String productUPC, String productItemNo, int productQty)
         {
             this.productDescription = productDescription;
             this.productUPC = productUPC;
             this.productItemNo = productItemNo;
+            this.productQty = productQty;
         }
     }
     class ViewHolder
@@ -169,11 +177,13 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
         TextView lblProdNameValue;
         TextView lblUPCValue;
         TextView lblItemNoValue;
+        TextView txtQty;
         ViewHolder(View view)
         {
             lblProdNameValue = (TextView) view.findViewById(R.id.lblProdNameValue);
             lblUPCValue = (TextView) view.findViewById(R.id.lblUPCValue);
             lblItemNoValue = (TextView) view.findViewById(R.id.lblItemNoValue);
+            txtQty = (TextView) view.findViewById(R.id.txtQty);
         }
 
     }
@@ -187,16 +197,16 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
         {
             ctx = context;
             myList = new ArrayList<SODActivity.SingleRowProduct>();
-            List<ProductDTO> someProducts = new ArrayList<ProductDTO>();
-            IProductDAO productDAO = new ProductDAO(ctx);
-            String sql = "SELECT * FROM PRODUCT ORDER BY ITEM_NO ";
-            someProducts = productDAO.getProductsByYourSQL(sql);
-            productsCount = someProducts.size();
 
-            for (ProductDTO aProduct : someProducts) {
-                SingleRowProduct singleRowAdapter = new SingleRowProduct(aProduct.getPRODUCT_DESC(),aProduct.getCOMPANY_CODE()
-                        + aProduct.getUPC_CODE(), aProduct.getITEM_NO());
-                myList.add(singleRowAdapter);
+            // Move this one on top  List<AdjustmentBLL> someAdjustments = new ArrayList<AdjustmentBLL>();
+            IInvenadjDAO invenadjDAO = new InvenadjDAO(ctx);
+
+            someAdjustments = invenadjDAO.createInvenadjBLLByDate("2017-03-03");
+            productsCount = someAdjustments.size();
+            for (AdjustmentBLL oneAdjustmentBLL : someAdjustments) {
+                SingleRowProduct singleRowProduct = new SingleRowProduct(oneAdjustmentBLL.getPRODUCT_DESC(), oneAdjustmentBLL.getCOMPANY_CODE()+ oneAdjustmentBLL.getUPC_CODE() + oneAdjustmentBLL.getSUB_UPC_CODE(),
+                        oneAdjustmentBLL.getITEM_NO(), oneAdjustmentBLL.getADJUST_QTY());
+                myList.add(singleRowProduct);
             }
         }
 
@@ -221,7 +231,7 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
             SODActivity.ViewHolder viewHolder = null;
             if(row == null) { //This if is to optimize the speed. if it is null, it means row was not created otherwise don't keep recreating it.
                 LayoutInflater layoutInflater = (LayoutInflater) ctx.getSystemService(ctx.LAYOUT_INFLATER_SERVICE);
-                row = layoutInflater.inflate(R.layout.single_row_product, parent, false);
+                row = layoutInflater.inflate(R.layout.single_row_adjustment, parent, false);
                 viewHolder = new ViewHolder(row);
                 row.setTag(viewHolder);
             }
@@ -233,6 +243,7 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
             viewHolder.lblProdNameValue.setText(singleRow.productDescription);
             viewHolder.lblUPCValue.setText(singleRow.productUPC);
             viewHolder.lblItemNoValue.setText(singleRow.productItemNo);
+            viewHolder.txtQty.setText(String.valueOf(singleRow.productQty));
             viewHolder.lblItemNoValue.setTag(singleRow);
             /*
             lblProdNameValue.setText(singleRow.productDescription);

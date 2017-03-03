@@ -14,9 +14,9 @@ import java.util.List;
  * Created by HOH on 2/27/2017.
  */
 
-public class IvenadjDAO extends WinHHDAO implements IIvenadjDAO {
+public class InvenadjDAO extends WinHHDAO implements IInvenadjDAO {
 
-    public IvenadjDAO(Context context) {
+    public InvenadjDAO(Context context) {
         super(context);
     }
 
@@ -43,6 +43,8 @@ public class IvenadjDAO extends WinHHDAO implements IIvenadjDAO {
         cv.put(ROUTE_PRICE, invenadjDTO.getROUTE_PRICE());
         cv.put(UPLOAD_IND, invenadjDTO.getUPLOAD_IND());
         cv.put(PRODUCT_ID, invenadjDTO.getPRODUCT_ID());
+
+        getWritableDatabase().insert(INVENADJ_TABLE, INVENADJ_ID, cv);
     }
 
     @Override
@@ -109,17 +111,19 @@ public class IvenadjDAO extends WinHHDAO implements IIvenadjDAO {
         return someInvenadj;
     }
 
+    @Override
     public List<AdjustmentBLL> createInvenadjBLLByDate(String startDate) {
 
         List<AdjustmentBLL> someAdjustmentBLL = new ArrayList<AdjustmentBLL>();
-/*
 
- */
-        String sql = "SELECT " + " p." + COMPANY_CODE + " p." + UPC_CODE + " p." + SUB_UPC_CODE + " p." + PRODUCT_GROUP_CODE + " p." + PRODUCT_CAT_CODE
-                + " p." + FINANCIAL_CAT_CODE +  " p." + PRODUCT_DESC + " i." + INVENADJ_ID + " i." + RECORD_TYPE + " i." + PRODUCT_ID + " i." + ITEM_NO
-                + " i." + STORE_DELIVERY_DATE +  " i." + DOCUMENT_NUMBER + " i." + ADJUST_INVENTORY + " i." + ADJUST_TYPE + " i." + ADJUST_QTY
-                + " FROM " + INVENADJ_TABLE + " i, " + PRODUCT_TABLE + " p " + " WHERE " + "i." + STORE_DELIVERY_DATE + " > '" + startDate + "'"
-                + " and " + " i." + PRODUCT_ID + " = " + " p." + PRODUCT_ID;
+        String sql = "SELECT " + " p." + COMPANY_CODE + ", p." + UPC_CODE + ", p." + SUB_UPC_CODE + ", p." + PRODUCT_GROUP_CODE + ", p." + PRODUCT_CAT_CODE
+                + ", p." + FINANCIAL_CAT_CODE +  ", p." + PRODUCT_DESC + ", i." + INVENADJ_ID + ", i." + RECORD_TYPE + ", i." + PRODUCT_ID + ", i." + ITEM_NO
+                + ", i." + STORE_DELIVERY_DATE +  ", i." + DOCUMENT_NUMBER + ", i." + ADJUST_INVENTORY + ", i." + ADJUST_TYPE + ", i." + ADJUST_QTY
+                + " FROM " + INVENADJ_TABLE + " i, " + PRODUCT_TABLE + " p " + " WHERE " + "( i." + STORE_DELIVERY_DATE + " > '" + startDate + " 00:00:00" + "'  and "
+                + "i." + STORE_DELIVERY_DATE + " < '" + startDate + " 24:00:00" + "')"
+                + " and "
+                + " i." + PRODUCT_ID + " = " + " p." + PRODUCT_ID
+                + " ORDER BY " + " p." + FINANCIAL_CAT_CODE + ", p." + PRODUCT_GROUP_CODE + ", p." + PRODUCT_CAT_CODE;
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
 
         if (cursor.getCount() > 0) {
@@ -138,6 +142,11 @@ public class IvenadjDAO extends WinHHDAO implements IIvenadjDAO {
                 adjustmentBLL.setRECORD_TYPE(cursor.getString(8));
                 adjustmentBLL.setPRODUCT_ID(cursor.getString(9));
                 adjustmentBLL.setITEM_NO(cursor.getString(10));
+                adjustmentBLL.setSTORE_DELIVERY_DATE(cursor.getString(11));
+                adjustmentBLL.setDOCUMENT_NUMBER(cursor.getString(12));
+                adjustmentBLL.setADJUST_INVENTORY(cursor.getString(13));
+                adjustmentBLL.setADJUST_TYPE(cursor.getString(14));
+                adjustmentBLL.setADJUST_QTY(Integer.parseInt(cursor.getString(15)));
                 someAdjustmentBLL.add(adjustmentBLL);
 
                 cursor.moveToNext();

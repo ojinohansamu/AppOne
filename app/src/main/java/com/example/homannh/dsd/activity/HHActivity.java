@@ -1,7 +1,6 @@
 package com.example.homannh.dsd.activity;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -15,11 +14,11 @@ import com.example.homannh.dsd.dao.ArloDAO;
 import com.example.homannh.dsd.dao.BasepriceDAO;
 import com.example.homannh.dsd.dao.IArloDAO;
 import com.example.homannh.dsd.dao.IBasepriceDAO;
-import com.example.homannh.dsd.dao.IIvenadjDAO;
+import com.example.homannh.dsd.dao.IInvenadjDAO;
 import com.example.homannh.dsd.dao.IMarketDAO;
 import com.example.homannh.dsd.dao.IProductDAO;
 import com.example.homannh.dsd.dao.IRouteDAO;
-import com.example.homannh.dsd.dao.IvenadjDAO;
+import com.example.homannh.dsd.dao.InvenadjDAO;
 import com.example.homannh.dsd.dao.MarketDAO;
 import com.example.homannh.dsd.dao.ProductDAO;
 import com.example.homannh.dsd.dao.RouteDAO;
@@ -307,7 +306,7 @@ public class HHActivity extends AppCompatActivity {
 
         private void CheckInvenadjTable() {
             List<InvenadjDTO> allInvenadj = new ArrayList<InvenadjDTO>();
-            IIvenadjDAO invenadjDAO = new IvenadjDAO(HHActivity.this);
+            IInvenadjDAO invenadjDAO = new InvenadjDAO(HHActivity.this);
 
             invenadjDAO.initInvenadj(HHActivity.this);
             invenadjDAO.isInvenadjTable();
@@ -320,13 +319,14 @@ public class HHActivity extends AppCompatActivity {
                 publishProgress(2);
                 allInvenadj = LoadInvenadjRow();
                 publishProgress(3);
-                int step = 100 / allInvenadj.size();
-                int currentStep = 3;
+
                 for (InvenadjDTO oneInvenadj : allInvenadj) {
                     try {
                         invenadjDAO.insert(oneInvenadj);
-                        currentStep += step;
-                        publishProgress(currentStep);
+                        recCount++;
+                        if(recCount % (allInvenadj.size()/25)==0){
+                            publishProgress(recCount * 100/ allInvenadj.size());
+                        }
 
                     } catch (Exception e) {
                         e.printStackTrace();

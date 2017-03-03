@@ -74,4 +74,7 @@
     <string name="lblDBOK">Your database is ready</string>
     <string name="lblAdjustmentTitle">Adjustments</string>
     <string name="lblLoad">Load:</string>
+    <string name="AdjShort">Short</string>
+    <string name="AdjOver" >Over</string>
+    <string name="lblTotal">Total:</string>
 </resources>

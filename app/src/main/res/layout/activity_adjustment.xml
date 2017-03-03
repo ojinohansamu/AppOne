@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_adjustment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    tools:context="com.example.homannh.dsd.activity.AdjustmentActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c1c1c1"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/toolbarLogIn" />
+
+    <TextView
+        android:text="ABCDEFGHIJABCDEFGHIJXXX"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarLogIn"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="31dp"
+        android:id="@+id/lblDescription1"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="@string/lblScannedUPC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblScannedUPC"
+        android:textSize="18sp"
+        android:layout_below="@+id/lblDescription1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp" />
+
+    <TextView
+        android:text="1234567890"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblScannedUPC"
+        android:layout_toRightOf="@+id/lblScannedUPC"
+        android:layout_toEndOf="@+id/lblScannedUPC"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:id="@+id/lblScannedUPCValue"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="1234567"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblItemNo"
+        android:layout_toRightOf="@+id/lblItemNo"
+        android:layout_toEndOf="@+id/lblItemNo"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:id="@+id/lblItemNoValue"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblTotalAdjustment"
+        android:layout_margin="10dp"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:id="@+id/radioGroup">
+
+
+        <RadioButton
+            android:text="@string/AdjShort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="19dp"
+            android:textSize="18sp"
+            android:id="@+id/rdbtnShort"
+            android:onClick="rdbtnOnClicked"/>
+
+        <RadioButton
+            android:text="@string/AdjOver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:textSize="18sp"
+            android:id="@+id/rdBtnOver"
+            android:onClick="rdbtnOnClicked"/>
+
+    </RadioGroup>
+
+    <Button
+        android:text="@string/lblOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:id="@+id/btnOk"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="120dp"
+        android:layout_marginRight="120dp"
+        android:onClick="btnOkClicked"
+        android:background="@drawable/new3dlongdefault" />
+
+    <TextView
+        android:text="Item No:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblItemNo"
+        android:textSize="18sp"
+        android:layout_below="@+id/lblScannedUPC"
+        android:layout_alignLeft="@+id/lblScannedUPC"
+        android:layout_alignStart="@+id/lblScannedUPC" />
+
+    <TextView
+        android:text="@string/lblTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblTotalAdjustment"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/lblItemNoValue"
+        android:layout_toLeftOf="@+id/lblTotalAdjustmentValue"
+        android:layout_toStartOf="@+id/lblTotalAdjustmentValue" />
+
+    <TextView
+        android:text="99999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblTotalAdjustmentValue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/radioGroup"
+        android:layout_alignRight="@+id/radioGroup"
+        android:layout_alignEnd="@+id/radioGroup"
+        android:layout_marginRight="44dp"
+        android:layout_marginEnd="44dp" />
+
+    <TextView
+        android:text="QTY:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblQty"
+        android:textSize="18sp"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignRight="@+id/btnOk"
+        android:layout_alignEnd="@+id/btnOk"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/txtAdjQtyValue"
+        android:inputType="number"
+        android:layout_alignBaseline="@+id/lblQty"
+        android:layout_toRightOf="@+id/lblQty" />
+
+
+</RelativeLayout>
