@@ -29,7 +29,7 @@
     <string name="lblDisplayMarkets">View Markets</string>
     <string name="lblDisplayProducts">View Products</string>
     <string name="lblScanner">Scanner</string>
-    <string name="lblScan">Scan</string>
+    <string name="lblScan">Camera Scanner</string>
     <string name="lblScannedUPC">UPC:</string>
     <string name="lblOk">OK</string>
     <string name="lblCancel">Cancel</string>
@@ -75,6 +75,26 @@
     <string name="lblAdjustmentTitle">Adjustments</string>
     <string name="lblLoad">Load:</string>
     <string name="AdjShort">Short</string>
-    <string name="AdjOver" >Over</string>
+    <string name="AdjOver">Over</string>
     <string name="lblTotal">Total:</string>
+    <string name="lblMainMenu">D.S.D. Main Menu</string>
+    <string name="lblDSDMain">D.S.D. Main</string>
+    <string name="lblMediaPlayer">Media Player</string>
+    <string name="lblPlay1">Play</string>
+    <string name="lblPause1">Pause</string>
+    <string name="lblStop">Stop</string>
+    <string name="lblvideo">Watch Videos</string>
+    <string name="lblBackToSound">Back To Sound</string>
+    <string name="lblMP3Player">MP3 Player</string>
+    <string name="lblYoutube">Youtube</string>
+    <string name="lblVideoPlayer">Video Player</string>
+    <string name="btnPlay">Play</string>
+    <string name="btnStop">Stop</string>
+    <string name="btnPause">Pause</string>
+    <string name="lblFF"><![CDATA[>>]]></string>
+    <string name="lblFB"><![CDATA[<<]]></string>
+    <string name="lblLast"><![CDATA[I<]]></string>
+    <string name="lblNext"><![CDATA[>I]]></string>
+    <string name="lblPlay">></string>
+    <string name="lblPause">II</string>
 </resources>

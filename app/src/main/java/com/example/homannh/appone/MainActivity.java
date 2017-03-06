@@ -8,6 +8,9 @@ import android.view.View;
 import com.example.homannh.camera.CameraActivity;
 import com.example.homannh.dsd.activity.DSDActivity;
 import com.example.homannh.gps.GPSActivity;
+//import com.example.homannh.mediaplayer.MyPlayerActivity;
+//import com.example.homannh.mediaplayer.SoundActivity;
+//import com.example.homannh.mp3player.MP3PlayerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnFourClicked(View view){
-        notReadyMessage();
+        //Intent soundActivity = new Intent(this, SoundActivity.class);
+        Intent mainMediaActivity = new Intent(this, MainMediaActivity.class);
+        startActivity(mainMediaActivity);
 
     }
 

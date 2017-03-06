@@ -17,25 +17,24 @@
         android:id="@+id/toolbarLogIn" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
+        android:text="iiiiiiiii"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lblRoutinfoID"
-        android:textSize="18sp"
-        android:layout_below="@+id/toolbarLogIn"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="15dp"
+        android:id="@+id/lblMainHeader"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"
         tools:textStyle="bold"
-        tools:textAlignment="center" />
+        tools:textColor="@color/colorPrimaryDark"
+        tools:textAlignment="center"
+        android:textAllCaps="true"
+        android:layout_below="@+id/toolbarLogIn"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="@string/lblDisplayArlos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lblRoutinfoID"
+        android:layout_below="@id/lblMainHeader"
         android:layout_marginTop="30dp"
         android:id="@+id/btnDisplayArlos"
         android:layout_marginLeft="20dp"

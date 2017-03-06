@@ -59,8 +59,19 @@
         <activity
             android:name="com.example.homannh.dsd.activity.AdjustmentActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.homannh.mediaplayer.VideoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.homannh.mediaplayer.PlayerListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.homannh.mediaplayer.MP3PlayerActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MainMediaActivity" />
+        <activity android:name="com.example.homannh.mediaplayer.VideoPlayerActivity"
+            android:screenOrientation="landscape" />
         <activity android:name="com.example.homannh.dsd.activity.ProductListViewActivity"></activity>
-
-    </application>
+    </application>VideoPlayerActivity
 
 </manifest>

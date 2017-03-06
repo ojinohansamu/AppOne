@@ -114,8 +114,8 @@
         android:id="@+id/btnScan"
         android:background="@drawable/button_short"
         android:layout_below="@+id/lblDescription4"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
         android:layout_alignParentRight="false"
         android:layout_alignParentEnd="false"
         android:textSize="18sp" />
@@ -128,8 +128,7 @@
         android:ems="10"
         android:id="@+id/txtUPC"
         android:layout_below="@+id/lblDescription4"
-        android:layout_alignRight="@+id/btnScan"
-        android:layout_alignEnd="@+id/btnScan"
+        android:layout_centerHorizontal="true"
         tools:clickable="false"
         android:selectAllOnFocus="false"
         android:singleLine="true" />

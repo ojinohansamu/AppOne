@@ -1,5 +1,10 @@
 package com.example.homannh.dsd.activity;
 
+/*
+ H. Homann
+ This custom listview is based on the videos below
+ https://www.youtube.com/watch?v=ka5Tk7J9rG0&t=49s
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

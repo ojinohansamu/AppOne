@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.homannh.appone.R;
+import com.example.homannh.dsd.bll.AdjItemSER;
 
 public class AdjustmentActivity extends AppCompatActivity {
 
@@ -40,8 +41,8 @@ public class AdjustmentActivity extends AppCompatActivity {
         {
             Intent intent = getIntent();
             if(intent!=null) {
-                AdjItem adjItem = new AdjItem();
-                adjItem = (AdjItem) intent.getSerializableExtra("VAR_Adjustment");
+                AdjItemSER adjItem = new AdjItemSER();
+                adjItem = (AdjItemSER) intent.getSerializableExtra("VAR_Adjustment");
                 toolBar.setTitle("UPC:" + adjItem.getCOMPANY_CODE() + adjItem.getUPC_CODE() + adjItem.getSUB_UPC_CODE());
 
                 lblDescription1.setText(adjItem.getPRODUCT_DESC());

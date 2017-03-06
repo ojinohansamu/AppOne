@@ -1,6 +1,5 @@
 package com.example.homannh.dsd.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,35 +12,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.homannh.appone.R;
+import com.example.homannh.dsd.bll.AdjItemSER;
 import com.example.homannh.dsd.bll.AdjustmentBLL;
-import com.example.homannh.dsd.dao.BasepriceDAO;
-import com.example.homannh.dsd.dao.IBasepriceDAO;
+import com.example.homannh.dsd.bll.RouteInfoSER;
 import com.example.homannh.dsd.dao.IInvenadjDAO;
-import com.example.homannh.dsd.dao.IProductDAO;
 import com.example.homannh.dsd.dao.InvenadjDAO;
-import com.example.homannh.dsd.dao.ProductDAO;
-import com.example.homannh.dsd.dto.BasepriceDTO;
-import com.example.homannh.dsd.dto.InvenadjDTO;
-import com.example.homannh.dsd.dto.ProductDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SODActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
+    private static final int UPC_DIGIT = 10;
+    public static final String _VAR_RouteinfoTag = "VAR_Routeinfo";
     private Toolbar toolBar;
+    private RouteInfoSER _routeInfo;
     private ListView listviewAdjustments;
     private TextView txtUPC;
-    private int startx =0;
-    private  int productsCount;
-    private TextView lblAdjustmentTitle;
-    private String _Routeinfo;
+    private int noDigits = 0;
+    private int productsCount;
 
     private List<AdjustmentBLL> someAdjustments = new ArrayList<AdjustmentBLL>();
     AdjustmentBLL adjustmentBLLSelected = new AdjustmentBLL();
@@ -51,45 +45,40 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sod);
 
-        lblAdjustmentTitle = (TextView) findViewById(R.id.lblAdjustment);
-        Bundle bundle = getIntent().getExtras();
+        toolBar = (Toolbar) findViewById(R.id.toolbarLogIn);
 
-        if(bundle != null)
-        {
-            _Routeinfo  = bundle.getString("VAR_Routeinfo");
-            lblAdjustmentTitle.setText(_Routeinfo + "  Adjustments");
+        Bundle bundle = getIntent().getExtras();
+        if(bundle!=null) {
+            _routeInfo = new RouteInfoSER();
+            _routeInfo = (RouteInfoSER) bundle.getSerializable(_VAR_RouteinfoTag);
+            if (_routeInfo != null) {
+                toolBar.setTitle(_routeInfo.getMARKET_ID() + _routeInfo.getROUTE_ID() + "  Load Adjustments");
+            }
         }
+
+        txtUPC = (TextView) findViewById(R.id.txtUPC);
+        //txtUPC.requestFocus();
 
         listviewAdjustments = (ListView) findViewById(R.id.listviewAdjustments);
         listviewAdjustments.setAdapter(new MyCustomAdapter(this));
         listviewAdjustments.setOnItemClickListener(this);
 
-        txtUPC = (TextView) findViewById(R.id.txtUPC);
         txtUPC.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                startx  = start + count;
+                noDigits = start + count;
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(startx>9) {
-                    int i;
-                    if(startx>10)
-                        i = 0;
-                    else
-                        i = 1;
-                    String myUPC = txtUPC.getText().toString();
-                    String companyCode = myUPC.substring(1 - i, 6 - i);
-                    String upcCode = myUPC.substring(6 - i, 11-i);
-
-                    startx = 0;
-                    txtUPC.setText("");
-                    if(GetProduct(companyCode, upcCode))
-                        nextScreen(SODActivity.this);
+                if(noDigits > (UPC_DIGIT -1)) {
+                    if(validUpc())
+                    {
+                        txtUPC.setText("");
+                    }
 
                 }
             }
@@ -97,11 +86,30 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
+    public boolean validUpc(){
+        boolean result = false;
+        int i;
+        if(noDigits >UPC_DIGIT)
+            i = 0;
+        else
+            i = 1;
+
+        String myUPC = txtUPC.getText().toString();
+        String companyCode = myUPC.substring(1 - i, 6 - i);
+        String upcCode = myUPC.substring(6 - i, 11-i);
+        if(GetProduct(companyCode, upcCode)) {
+            nextScreen(SODActivity.this);
+            result = true;
+        }
+        return result;
+    }
+
+
     public void nextScreen(Context ctx)
     {
         Intent adjustmentActivity = new Intent(this, AdjustmentActivity.class);
 
-        AdjItem adjustmentBLL = new AdjItem();
+        AdjItemSER adjustmentBLL = new AdjItemSER();
 
         adjustmentBLL.setCOMPANY_CODE(adjustmentBLLSelected.getCOMPANY_CODE());
         adjustmentBLL.setUPC_CODE(adjustmentBLLSelected.getUPC_CODE());
@@ -122,7 +130,7 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
         SODActivity.ViewHolder holder = (SODActivity.ViewHolder) view.getTag();
         SODActivity.SingleRowProduct singleRowProduct = (SODActivity.SingleRowProduct) holder.lblItemNoValue.getTag();
 
-        AdjItem adjustmentBLL = new AdjItem();
+        AdjItemSER adjustmentBLL = new AdjItemSER();
         adjustmentBLL.setCOMPANY_CODE(singleRowProduct.productUPC.substring(0,5));
         adjustmentBLL.setUPC_CODE(singleRowProduct.productUPC.substring(5,10));
         adjustmentBLL.setSUB_UPC_CODE(singleRowProduct.productUPC.substring(10));
@@ -132,6 +140,8 @@ public class SODActivity extends AppCompatActivity implements AdapterView.OnItem
         intent.putExtra("VAR_Adjustment",adjustmentBLL);
 
         startActivity(intent);
+
+        txtUPC.setText("");
         //Toast.makeText(this, "Pos = " + position, Toast.LENGTH_LONG).show();
 
     }

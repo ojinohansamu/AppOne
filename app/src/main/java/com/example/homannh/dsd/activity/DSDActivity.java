@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.homannh.appone.MainActivity;
 import com.example.homannh.appone.R;
+import com.example.homannh.dsd.bll.RouteInfoSER;
 import com.example.homannh.dsd.dao.IRouteDAO;
 import com.example.homannh.dsd.dao.RouteDAO;
 import com.example.homannh.dsd.dto.RouteDTO;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class DSDActivity extends AppCompatActivity {
 
+    public static final String _VAR_RouteinfoTag = "VAR_Routeinfo";
     private TextView lblUserValue;
     private TextView txtUserPassword;
     private String marketRouteID = "";
@@ -26,7 +28,6 @@ public class DSDActivity extends AppCompatActivity {
     private Toolbar toolBar;
     private RouteDTO _route;
     private String password;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +59,13 @@ public class DSDActivity extends AppCompatActivity {
     public void btnLoginOnClicked(View view){
         if(password.equals(txtUserPassword.getText().toString())) {
             Intent dsdMainMenuActivity = new Intent(this, DSDMainMenuActivity.class);
-            dsdMainMenuActivity.putExtra("VAR_Routeinfo", _route.getMARKET_ID() + " " + _route.getROUTE_ID() + "  " + _route.getROUTE_NAME());
-            //Does not work, this is try to pass the RouteDTO dsdMainMenuActivity.putExtra("data", (Serializable) _route);
+            RouteInfoSER _routeInfo = new RouteInfoSER();
+            _routeInfo.setMARKET_ID( _route.getMARKET_ID());
+            _routeInfo.setROUTE_ID(_route.getROUTE_ID());
+            _routeInfo.setROUTE_TYPE(_route.getROUTE_TYPE());
+            _routeInfo.setROUTE_NAME(_route.getROUTE_NAME());
+            _routeInfo.setDNL_DATE(_route.getDNL_DATE());
+            dsdMainMenuActivity.putExtra(_VAR_RouteinfoTag, _routeInfo);
             startActivity(dsdMainMenuActivity);
         }
         else

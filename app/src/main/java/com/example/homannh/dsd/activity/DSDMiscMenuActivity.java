@@ -1,6 +1,8 @@
 package com.example.homannh.dsd.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,12 +11,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.homannh.appone.R;
+import com.example.homannh.dsd.bll.RouteInfoSER;
 
 public class DSDMiscMenuActivity extends AppCompatActivity {
 
+    public static final String _VAR_RouteinfoTag = "VAR_Routeinfo";
     private Toolbar toolBar;
-    private String _Routeinfo;
-    private TextView lblRouteInfoID;
+    private TextView lblMainHeader;
+    private RouteInfoSER _routeInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +26,23 @@ public class DSDMiscMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dsdmisc_menu);
 
         toolBar = (Toolbar) findViewById(R.id.toolbarLogIn);
-        toolBar.setTitle("Miscellaneous");
+        lblMainHeader = (TextView) findViewById(R.id.lblMainHeader);
 
-        lblRouteInfoID = (TextView) findViewById(R.id.lblRoutinfoID);
         Bundle bundle = getIntent().getExtras();
-        _Routeinfo  = bundle.getString("VAR_Routeinfo");
-        if(_Routeinfo!=null) {
-            lblRouteInfoID.setText(_Routeinfo);
+        if(bundle!=null) {
+            _routeInfo = new RouteInfoSER();
+            _routeInfo = (RouteInfoSER) bundle.getSerializable(_VAR_RouteinfoTag);
+            if (_routeInfo != null) {
+                toolBar.setTitle(_routeInfo.getMARKET_ID() + _routeInfo.getROUTE_ID() + "  " + _routeInfo.getROUTE_NAME());
+            }
+            lblMainHeader.setText(R.string.lblMiscellaneous);
         }
+
     }
 
     public void btnExitOnClicked(View view){
         Intent dsdMainMenuActivity = new Intent(this, DSDMainMenuActivity.class);
-        dsdMainMenuActivity.putExtra("VAR_Routeinfo",_Routeinfo );
+        dsdMainMenuActivity.putExtra(_VAR_RouteinfoTag, _routeInfo);
         startActivity(dsdMainMenuActivity);
 
     }
@@ -59,8 +67,25 @@ public class DSDMiscMenuActivity extends AppCompatActivity {
     }
 
     public void btnReloadDBClicked(View view){
-        Intent  hhActivity = new Intent(this, HHActivity.class);
-        startActivity(hhActivity);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Confirm Rebuilding..");
+        alertDialog.setMessage("Are you sure you want to re-build the database?");
+        alertDialog.setIcon(R.drawable.bimboround);
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent  hhActivity = new Intent(DSDMiscMenuActivity.this, HHActivity.class);
+                startActivity(hhActivity);
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alertDialog.show();
     }
 
     public void DisplayMessages(String msg){

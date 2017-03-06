@@ -1,14 +1,12 @@
-package com.example.homannh.dsd.activity;
-
-import com.example.homannh.dsd.dto.ProductDTO;
+package com.example.homannh.dsd.bll;
 
 import java.io.Serializable;
 
 /**
- * Created by HOH on 3/3/2017.
+ * Created by HOH on 3/4/2017.
  */
 
-public class AdjItem implements Serializable{
+public class AdjItemSER implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,7 +19,7 @@ public class AdjItem implements Serializable{
 
     @Override
     public String toString() {
-        return "AdjItem{" +
+        return "AdjItemSER{" +
                 "COMPANY_CODE='" + COMPANY_CODE + '\'' +
                 ", UPC_CODE='" + UPC_CODE + '\'' +
                 ", SUB_UPC_CODE='" + SUB_UPC_CODE + '\'' +
@@ -29,6 +27,10 @@ public class AdjItem implements Serializable{
                 ", PRODUCT_DESC='" + PRODUCT_DESC + '\'' +
                 ", ADJUST_QTY=" + ADJUST_QTY +
                 '}';
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public String getCOMPANY_CODE() {
