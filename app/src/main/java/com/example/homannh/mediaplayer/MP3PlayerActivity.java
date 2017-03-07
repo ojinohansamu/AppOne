@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.homannh.appone.R;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MP3PlayerActivity extends AppCompatActivity implements View.OnClickListener{
@@ -33,7 +34,9 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
     private Button btnFF;
     private Button btnLast;
     private Button btnNext;
+    private TextView tvSongNameLast;
     private TextView tvSongName;
+    private TextView tvSongNameNext;
     private Toolbar toolBar;
 
     @Override
@@ -44,7 +47,9 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
         toolBar = (Toolbar) findViewById(R.id.toolbarLogIn);
         toolBar.setTitle(R.string.lblMP3Player);
 
+        tvSongNameLast = (TextView) findViewById(R.id.tvSongNameLast);
         tvSongName = (TextView) findViewById(R.id.tvSongName);
+        tvSongNameNext = (TextView) findViewById(R.id.tvSongNameNext);
         btnPlay = (Button) findViewById(R.id.btnPlay);
         btnFB = (Button) findViewById(R.id.btnFB);
         btnFF = (Button) findViewById(R.id.btnFF);
@@ -79,7 +84,9 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
         mp = MediaPlayer.create(getApplicationContext(), uri);
         mp.start();
 
-        tvSongName.setText(mySongLibrary.get(position).getName());
+        displaySongTitle();
+
+
         seekBar.setMax(mp.getDuration());
 
         su = new seekUpdater(true);
@@ -101,6 +108,40 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
                 mp.seekTo(seekBar.getProgress());
             }
         });
+
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                position++;
+                if (position >= mySongLibrary.size())
+                    position = 0;
+                uri = Uri.parse(mySongLibrary.get(position).toString());
+                mp = MediaPlayer.create(getApplicationContext(), uri);
+                try {
+                    mp.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mp.start();
+                displaySongTitle();
+                seekBar.setMax(mp.getDuration());
+                seekBar.setProgress(mp.getCurrentPosition());
+            }
+        });
+    }
+
+    private void displaySongTitle() {
+        if(position == 0)
+            tvSongNameLast.setText(mySongLibrary.get(mySongLibrary.size() -1).getName());
+        else
+            tvSongNameLast.setText(mySongLibrary.get(position-1).getName());
+
+        tvSongName.setText(mySongLibrary.get(position).getName());
+
+        if(position == mySongLibrary.size() -1)
+            tvSongNameNext.setText(mySongLibrary.get(0).getName());
+        else
+            tvSongNameNext.setText(mySongLibrary.get(position+1).getName());
     }
 
     @Override
@@ -139,7 +180,7 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
                 uri = Uri.parse(mySongLibrary.get(position).toString());
                 mp = MediaPlayer.create(getApplicationContext(), uri);
                 mp.start();
-                tvSongName.setText(mySongLibrary.get(position).getName());
+                displaySongTitle();
                 seekBar.setMax(mp.getDuration());
                 seekBar.setProgress(mp.getCurrentPosition());
                 su = new seekUpdater(true);
@@ -161,7 +202,7 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
                 uri = Uri.parse(mySongLibrary.get(position).toString());
                 mp = MediaPlayer.create(getApplicationContext(), uri);
                 mp.start();
-                tvSongName.setText(mySongLibrary.get(position).getName());
+                displaySongTitle();
                 seekBar.setMax(mp.getDuration());
                 seekBar.setProgress(mp.getCurrentPosition());
                 su = new seekUpdater(true);
