@@ -72,6 +72,6 @@
         <activity android:name="com.example.homannh.mediaplayer.VideoPlayerActivity"
             android:screenOrientation="landscape" />
         <activity android:name="com.example.homannh.dsd.activity.ProductListViewActivity"></activity>
-    </application>VideoPlayerActivity
+    </application>
 
 </manifest>
