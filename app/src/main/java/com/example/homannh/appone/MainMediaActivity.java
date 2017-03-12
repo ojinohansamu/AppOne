@@ -1,11 +1,10 @@
 package com.example.homannh.appone;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.example.homannh.mediaplayer.MP3PlayerActivity;
 import com.example.homannh.mediaplayer.PlayerListActivity;
 
 public class MainMediaActivity extends AppCompatActivity {
@@ -35,8 +34,9 @@ public class MainMediaActivity extends AppCompatActivity {
     }
 
     public void btnThreeClicked(View view){
-        Intent intent = new Intent(MainMediaActivity.this, MP3PlayerActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(MainMediaActivity.this, MP3PlayerActivity.class);
+        //startActivity(intent);
+        notReadyMessage();
 
     }
 

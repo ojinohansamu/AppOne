@@ -45,19 +45,18 @@
         android:onClick="btnTwoClicked" />
 
     <Button
+        android:id="@+id/btnThree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:id="@+id/btnThree"
-        android:background="@drawable/button_funky"
-        android:layout_below="@+id/btnTwo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnTwo"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/button_funky"
         android:onClick="btnThreeClicked"
-        android:text="@string/lblYoutube" />
+        android:text="@string/lblGallery" />
 
     <Button
-        android:text="@string/lblBlank"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
@@ -66,7 +65,8 @@
         android:layout_below="@+id/btnThree"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="btnFourClicked" />
+        android:onClick="btnFourClicked"
+        android:text="@string/lblYoutube"/>
 
     <Button
         android:text="@string/lblBlank"

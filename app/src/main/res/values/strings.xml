@@ -97,4 +97,6 @@
     <string name="lblNext"><![CDATA[>I]]></string>
     <string name="lblPlay">></string>
     <string name="lblPause">II</string>
+    <string name="lblGallery">Picture gallery</string>
+    <string name="title_activity_maps">HHMap</string>
 </resources>

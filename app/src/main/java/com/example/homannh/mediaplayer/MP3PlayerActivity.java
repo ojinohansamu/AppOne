@@ -21,7 +21,7 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
 
     public static final String VAR_POSITION = "Var_Position";
     public static final String VAR_MY_MEDIA_LIBRARY = "Var_myMediaLibrary";
-    static MediaPlayer mp;
+     MediaPlayer mp;
     ArrayList<File> mySongLibrary;
     int position = 0;
     Uri uri;
@@ -83,6 +83,7 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
         uri = Uri.parse(mySongLibrary.get(position).toString());
         mp = MediaPlayer.create(getApplicationContext(), uri);
         mp.start();
+        mp.setLooping(true);
 
         displaySongTitle();
 
@@ -123,6 +124,7 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
                     e.printStackTrace();
                 }
                 mp.start();
+                mp.setLooping(true);
                 displaySongTitle();
                 seekBar.setMax(mp.getDuration());
                 seekBar.setProgress(mp.getCurrentPosition());
@@ -180,6 +182,8 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
                 uri = Uri.parse(mySongLibrary.get(position).toString());
                 mp = MediaPlayer.create(getApplicationContext(), uri);
                 mp.start();
+                mp.setLooping(true);
+                btnPlay.setText(R.string.lblPause);
                 displaySongTitle();
                 seekBar.setMax(mp.getDuration());
                 seekBar.setProgress(mp.getCurrentPosition());
@@ -202,6 +206,8 @@ public class MP3PlayerActivity extends AppCompatActivity implements View.OnClick
                 uri = Uri.parse(mySongLibrary.get(position).toString());
                 mp = MediaPlayer.create(getApplicationContext(), uri);
                 mp.start();
+                mp.setLooping(true);
+                btnPlay.setText(R.string.lblPause);
                 displaySongTitle();
                 seekBar.setMax(mp.getDuration());
                 seekBar.setProgress(mp.getCurrentPosition());
